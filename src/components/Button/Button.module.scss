@@ -1,0 +1,36 @@
+@import "../../variables";
+
+.button {
+  font: inherit;
+  display: inline-block;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1rem;
+  border: none;
+  padding: 0.5em 2em;
+  background-color: $color_primary;
+  color: white;
+  border: 0.133rem solid $color_primary;
+  transition: box-shadow 0.2s linear, border 0.2s linear, background 0.2s linear;
+  margin: 0 auto;
+  &:hover
+  {
+    cursor: pointer;
+    box-shadow: 0 0 15px darken($color_card_bg, 30%);
+    border: 0.133rem solid $color_background;
+    background-color: lighten($color_primary, 20%);
+  }
+
+  .intro
+  {
+    font-size: 1.5rem;
+    //padding: 0.933rem 2.6rem;
+  }
+
+  @media ($feature: $mobile) {
+  text-align: center;
+  display: block;
+  margin: 0 auto;
+  font-size: 1.2;
+}
+}

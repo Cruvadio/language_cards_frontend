@@ -1,10 +1,10 @@
 import React from "react";
-import './Toggle.module.css'
+import s from'./Toggle.module.css'
 
 const Toggle = () => {
     return (
-        <button styleName="toggle" id="nav-toggle" type="button">
-            <span styleName="item">Menu</span>
+        <button className={s.toggle} id="nav-toggle" type="button">
+            <span className={s.item}>Menu</span>
         </button>
     )
 }

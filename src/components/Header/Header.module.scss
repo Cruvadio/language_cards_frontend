@@ -9,14 +9,14 @@
   right: 0;
   z-index: 1000;
 
-  background-color: fade-out(#28D1E7, 0);
+  background-color: transparentize(#28D1E7, 1);
 
   transition: background-color 0.2s linear;
 
   &.fixed {
     position: fixed;
     padding: 0.66rem 2.66rem;
-    box-shadow: 0 3px 10px fade-out(#717171, 0.4);
+    box-shadow: 0 3px 10px opacify(#717171, 0.4);
 
     & .nav-toggle {
       top: 10px

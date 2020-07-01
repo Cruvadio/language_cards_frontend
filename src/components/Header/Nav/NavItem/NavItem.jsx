@@ -1,4 +1,4 @@
-import s from "../NavItem.module.css";
+import s from "./NavItem.module.scss";
 import React from "react";
 
 const NavItem = (props) =>{

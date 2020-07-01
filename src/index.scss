@@ -1,0 +1,54 @@
+@import "variables";
+
+
+html
+{
+  font-size: 15px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  /*background-color: #EBC0CC;*/
+  font-size: 1rem;
+  font-weight: 700;
+  font-family: $font_Monserrat;
+  /*background-image: url(../images/hypnotize.png);*/
+  background-color: white;
+
+  &.no-scroll
+  {
+    overflow: hidden;
+  }
+}
+
+.input{
+  border: none;
+  padding: 1.33rem;
+  width: 100%;
+
+
+}
+.container {
+  margin: 0 auto;
+  max-width: 1200px;
+
+  padding: 0 1rem;
+
+  &--main{
+    background-color: white;
+  }
+}
+
+
+@import "components/Header/Header.module";
+@import "components/Header/HeaderTitle/HeaderTitle.module";
+@import "components/Header/Nav/Nav.module";
+@import "components/Header/Nav/NavItem/NavItem.module";
+@import "components/Header/Toggle/Toggle.module";
