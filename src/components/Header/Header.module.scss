@@ -1,0 +1,45 @@
+@import "../../variables";
+
+.header {
+  padding: 1.33rem 2.66rem;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+
+  background-color: fade-out(#28D1E7, 0);
+
+  transition: background-color 0.2s linear;
+
+  &.fixed {
+    position: fixed;
+    padding: 0.66rem 2.66rem;
+    box-shadow: 0 3px 10px fade-out(#717171, 0.4);
+
+    & .nav-toggle {
+      top: 10px
+    }
+
+    background-color: #28d1e7;
+
+
+  }
+
+  @media ($feature: $ntablet) {
+
+
+    &.active {
+      background-color: #28D1E7;
+    }
+  }
+}
+
+.inner {
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+

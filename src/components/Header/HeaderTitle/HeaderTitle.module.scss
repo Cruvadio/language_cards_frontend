@@ -1,0 +1,11 @@
+.title {
+  text-decoration: none;
+  color: white;
+  font-size: 1.33rem;
+  font-weight: 900;
+  text-transform: uppercase;
+
+  @media ($feature: $mobile) {
+    font-size: 1rem;
+  }
+}
