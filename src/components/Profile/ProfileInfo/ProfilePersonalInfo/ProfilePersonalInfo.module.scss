@@ -1,0 +1,78 @@
+@import "../../../../variables";
+
+.profile{
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
+  text-align: center;
+}
+
+.avatarWrapper{
+  padding: 1.2rem 0;
+}
+
+.avatar{
+  margin: 0 auto;
+  display: block;
+  width: 200px;
+  height: auto;
+  border-radius: 50%;
+  border: 2px solid $color_primary;
+}
+
+.userName
+{
+  font-size: 1.5rem;
+  color: $color_primary;
+  padding-bottom: 1rem;
+}
+
+.realUserName {
+  padding-bottom: 1rem;
+  font-family: 'Poiret One', cursive;
+  font-size: 1.2rem;
+}
+.personalInfo
+{
+  padding-bottom: 1.3rem;
+
+  color: $color_primary;
+}
+
+.list
+{
+  display: flex;
+  flex-direction: column;
+}
+
+.personalInfo_element
+{
+  text-align: left;
+  margin-bottom: 0.8rem;
+  display: grid;
+  grid-template-columns: 3fr 4fr;
+  list-style: none;
+  font-family: 'Poiret One', cursive;
+
+  &.about{
+    text-align: left;
+    display: grid;
+    grid-template-rows: 1fr 5fr;
+    grid-template-columns: 1fr;
+  }
+}
+
+.elementCategory{
+  color: $color_primary;
+  font-family: "Montserrat", sans-serif;
+}
+
+
+
+.form{
+  margin-top: 1rem;
+  display: grid;
+  grid-template-rows: 5fr 1fr;
+}
+

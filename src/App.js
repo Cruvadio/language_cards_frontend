@@ -1,9 +1,10 @@
 import React from 'react';
-import logo from './logo.svg';
-import s from './App.module.scss';
+//import logo from './logo.svg';
+//import s from './App.module.scss';
 import Header from "./components/Header/Header";
 import "./main.scss"
-import Intro from "./components/Intro/Intro";
+//import Intro from "./components/Intro/Intro";
+import Profile from "./components/Profile/Profile";
 
 function App(props) {
     return (
@@ -25,7 +26,8 @@ function App(props) {
         </div>*/
         <div>
             <Header navData={props.navData} />
-            <Intro buttonName={props.buttonName} introTitle={props.introTitle}/>
+            {/*<Intro buttonName={props.buttonName} introTitle={props.introTitle}/>*/}
+            <Profile />
         </div>
     );
 }

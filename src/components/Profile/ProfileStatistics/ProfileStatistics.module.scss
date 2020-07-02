@@ -1,0 +1,8 @@
+@import "./../../../variables";
+
+.statistics{
+  padding: 1rem;
+  background-color: fade_out($color_secondary,0.67);
+  border-radius: 1.2rem 0 1.2rem 0;
+}
+

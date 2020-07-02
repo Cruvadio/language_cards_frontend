@@ -12,7 +12,7 @@ class Header extends Component{
     render()
     {
         return (
-            <header className={s.header} id="header">
+            <header className={s.header + " " + s.fixed} id="header">
                 <div className={s.inner}>
                     <HeaderTitle content="Language Cards"/>
                     <Nav navData={this.props.navData}/>
