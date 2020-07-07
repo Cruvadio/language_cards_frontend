@@ -1,9 +1,10 @@
 import s from "./NavItem.module.scss";
 import React from "react";
+import {NavLink} from "react-router-dom";
 
 const NavItem = (props) =>{
     return (
-        <a href={props.link} className={s.link}>{props.content}</a>
+        <NavLink to={props.link} className={s.link}>{props.content}</NavLink>
     )
 }
 

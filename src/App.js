@@ -3,8 +3,12 @@ import React from 'react';
 //import s from './App.module.scss';
 import Header from "./components/Header/Header";
 import "./main.scss"
-//import Intro from "./components/Intro/Intro";
 import Profile from "./components/Profile/Profile";
+
+import {
+    Route,
+} from "react-router-dom"
+import IntroContainer from "./components/Intro/IntroContainer";
 
 function App(props) {
     return (
@@ -25,9 +29,10 @@ function App(props) {
           </header>
         </div>*/
         <div>
-            <Header navData={props.navData} />
+            <Header/>
+            <Route exact path='/' render={() => <IntroContainer />}/>
+            <Route path='/profile' render={() => <Profile />}/>
             {/*<Intro buttonName={props.buttonName} introTitle={props.introTitle}/>*/}
-            <Profile />
         </div>
     );
 }

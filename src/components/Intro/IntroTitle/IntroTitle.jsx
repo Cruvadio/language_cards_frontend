@@ -4,7 +4,7 @@ import React from "react";
 
 const IntroTitle = (props) => {
     return (
-        <h1 className={s.title}> {props.content}</h1>
+        <h1 className={s.title + " " + s.focusInExpandFwd}> {props.content} </h1>
     )
 }
 

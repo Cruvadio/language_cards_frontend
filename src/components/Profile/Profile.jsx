@@ -1,14 +1,17 @@
 import React from 'react';
 import s from './Profile.module.scss'
-import ProfileInfo from "./ProfileInfo/ProfileInfo";
-import ProfileStatistics from "./ProfileStatistics/ProfileStatistics";
+import ProfilePostsContainer from "./ProfilePosts/ProfilePostsContainer";
+import ProfilePersonalInfo from "./ProfilePersonalInfo/ProfilePersonalInfo";
+import ProfileCardsContainer from "./ProfileCards/ProfileCardsContainer";
 
-const Profile = () =>
+const Profile = (props) =>
 {
     return (
         <div className={s.profile + ' container'}>
-            <ProfileInfo />
-            <ProfileStatistics />
+            <ProfilePersonalInfo />
+            <ProfilePostsContainer/>
+            <ProfileCardsContainer />
+
         </div>
     )
 }

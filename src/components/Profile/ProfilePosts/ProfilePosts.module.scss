@@ -1,0 +1,16 @@
+@import "./../../../variables";
+
+.statistics{
+  grid-row: 1/3;
+  grid-column: 2;
+  //background-color: fade_out($color_secondary,0.67);
+  border-radius: 1.5rem;
+  border: 1px solid $color_primary;
+}
+
+.header{
+  padding: 1.2rem;
+  background-color: $color_primary;
+  border-radius: 1.2rem 1.2rem 0 0;
+  color: white;
+}

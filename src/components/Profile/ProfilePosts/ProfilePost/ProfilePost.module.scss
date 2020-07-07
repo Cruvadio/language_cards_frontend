@@ -1,0 +1,19 @@
+@import "../../../../variables";
+
+.post{
+  display: grid;
+  grid-template-columns: 1fr 5fr 1fr;
+  align-items: center;
+}
+
+.image{
+  margin: 0.66rem;
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
+  border: 1px solid $color_primary;
+}
+
+.message{
+  padding: 0 0.66rem;
+}

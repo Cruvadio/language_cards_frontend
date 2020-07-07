@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import s from './Header.module.scss';
 import Toggle from "./Toggle/Toggle";
-import Nav from "./Nav/Nav";
 import HeaderTitle from "./HeaderTitle/HeaderTitle";
+import NavContainer from "./Nav/NavContainer";
 
 class Header extends Component{
 
@@ -15,7 +15,7 @@ class Header extends Component{
             <header className={s.header + " " + s.fixed} id="header">
                 <div className={s.inner}>
                     <HeaderTitle content="Language Cards"/>
-                    <Nav navData={this.props.navData}/>
+                    <NavContainer />
                     <Toggle />
                 </div>
             </header>

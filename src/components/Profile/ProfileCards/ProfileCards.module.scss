@@ -1,0 +1,80 @@
+@import "../../../variables";
+
+
+.cards {
+  //background-color: fade_out($color_secondary, 0.67);
+  border-radius: 1.5rem;
+  border: 1px solid $color_primary;
+}
+
+.header {
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  background-color: $color_primary;
+  overflow: hidden;
+  border: 1px solid $color_primary;
+  border-radius: 1.2rem 1.2rem 0 0;
+  color: white;
+}
+
+.inner {
+  display: grid;
+  justify-items: center;
+  padding-bottom: 1rem;
+
+}
+
+.button {
+  position: relative;
+  font: inherit;
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding-right: 0.86rem;
+
+  &:focus {
+    border: none;
+    outline: none;
+  }
+
+  &::before,
+  &::after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1;
+    content: "";
+    display: block;
+    width: 2px;
+    height: 1.43rem;
+    background-color: white;
+    transition: transform 0.2s linear;
+  }
+
+  &::before {
+    transform: rotate(90deg);
+  }
+
+  &:hover::after {
+    transform: scale(1.4);
+  }
+
+  &:hover::before {
+    transform: scale(1.4) rotate(90deg);
+  }
+
+}
+
+.elements {
+
+  padding: 1.32rem 0.66rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-column-gap: 0.3rem;
+  grid-row-gap: 0.6rem;
+}
+
+

@@ -2,7 +2,7 @@ import React from 'react';
 
 import s from './ProfilePersonalInfo.module.scss'
 
-const ProfilePersonalInfo = () => {
+const ProfilePersonalInfo = (props) => {
     return (
         <div>
             <div className={s.profile}>

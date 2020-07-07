@@ -9,7 +9,7 @@ import NavItem from "./NavItem/NavItem";
 
 const Nav = (props) => {
 
-    let navElements = props.navData.map(e => <NavItem link={e.link} content={e.content}/>)
+    let navElements = props.navData.map(e => <NavItem link={e.link} key={e.id} content={e.content}/>)
     return (
         <nav className={s.nav}>
             {navElements}

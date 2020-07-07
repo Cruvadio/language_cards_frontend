@@ -1,7 +1,16 @@
-.profile{
+@import "../../variables";
+
+.profile {
   margin-top: 2.92rem;
   min-height: 100vh;
   display: grid;
 
   grid-template-columns: 1fr 1fr;
+  
+  grid-column-gap: 1rem;
+  
+  @media ($feature: $narrow) {
+    grid-template-columns: 1fr;
+    
+  }
 }
