@@ -1,4 +1,5 @@
 import * as axios from "axios";
+import {cardsAPI} from "../../api/api";
 
 const SET_CARDSETS = "SET-CARDSETS";
 const ADD_CARDSET = "ADD-CARDSET"
@@ -7,26 +8,7 @@ const MORE_CARDSETS = "MORE-CARDSETS";
 
 
 let initialState = {
-    cardsets: [
-            /*{
-                id: 1,
-                cardName: "Grundlegende Wörter",
-                language: "German",
-                lastDate: "2 days ago",
-            },
-            {
-                id: 2,
-                cardName: "Grundlegende Wörter",
-                language: "German",
-                lastDate: "2 days ago",
-            },
-            {
-                id: 3,
-                cardName: "Grundlegende Wörter",
-                language: "German",
-                lastDate: "2 days ago",
-            },*/
-        ],
+    cardsets: [],
     totalCount: 0,
     nextPage: "",
 
@@ -34,7 +16,6 @@ let initialState = {
 
 
 const cardsReducer = (state = initialState, action) => {
-    debugger;
     switch (action.type) {
 
         case SET_CARDSETS:
@@ -45,7 +26,7 @@ const cardsReducer = (state = initialState, action) => {
                     return {
                         id: cardset.id,
                         cardName: cardset.name,
-                        language: cardset.to_language,
+                        language: cardset.name,
                         lastDate: cardset.last_revision_date
                     }
                 }),
@@ -55,7 +36,6 @@ const cardsReducer = (state = initialState, action) => {
         }
         case MORE_CARDSETS:
         {
-            debugger;
             return {
                 ...state,
                 nextPage: action.nextPage,
@@ -63,7 +43,7 @@ const cardsReducer = (state = initialState, action) => {
                     return{
                         id: cardset.id,
                         cardName: cardset.name,
-                        language: cardset.to_language,
+                        language: cardset.to_language.name,
                         lastDate: cardset.last_revision_date
                     }
                 })]
@@ -76,7 +56,14 @@ const cardsReducer = (state = initialState, action) => {
 }
 
 
-export const setCardsetsAC = (cardsets, totalCount, nextPage) => ({type: SET_CARDSETS, cardsets, totalCount, nextPage})
-export const addCardsetAC = (cardset) => ({type: ADD_CARDSET, cardset})
-export const moreCardsetsAC = (newCards, nextPage) => ({type: MORE_CARDSETS, nextPage, newCards})
+export const setCardsets = (cardsets,nextPage, totalCount) => ({type: SET_CARDSETS, cardsets, totalCount, nextPage})
+export const addCardset = (cardset) => ({type: ADD_CARDSET, cardset})
+export const moreCardsets = (newCards, nextPage) => ({type: MORE_CARDSETS, nextPage, newCards})
+
+export const getCurrentUserCards = nextPage => dispatch => {
+    let action = nextPage? moreCardsets : setCardsets;
+    cardsAPI.getCurrentUserCards(nextPage).then (data => {
+        dispatch(action(data.results, data.next, data.count))
+    })
+}
 export default cardsReducer;

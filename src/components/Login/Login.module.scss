@@ -1,0 +1,113 @@
+@import "../../variables";
+
+.login {
+  display: flex;
+  background: linear-gradient(45deg, #FC5C7D, #6A82FB);
+  height: 100vh;
+}
+
+.inner {
+  background-color: white;
+  display: grid;
+  width: 800px;
+  height: 600px;
+  margin: auto;
+  padding: 2rem;
+  grid-template-rows: auto;
+  align-content: center;
+  justify-content: center;
+  grid-row-gap: 0.8rem;
+  position: relative;
+}
+
+.login h1 {
+  text-transform: uppercase;
+  color: #6A82FB;
+  text-align: center;
+  padding-bottom: 2rem;
+
+}
+
+.input {
+  width: 500px;
+  height: 3rem;
+  padding: 1rem;
+  font-family: $font_Monserrat;
+  font-weight: 700;
+  outline: none;
+  border-radius: 20px;
+  box-shadow: none;
+  background-color: #e7e7e7;
+  border: none;
+  &:focus{
+    animation: shadow 1.5s ease;
+  }
+  &:valid{
+    background-color: #e7e7e7;
+  }
+
+  &.button {
+    margin-top: 2rem;
+    cursor: pointer;
+    color: white;
+    background-color: #FC5C7D;
+    transition: background 0.2s ease;
+
+
+    &:hover {
+      background-color: #6A82FB;
+    }
+  }
+}
+
+.forgot{
+  text-align: center;
+  font-size: 0.8rem;
+  text-decoration: none;
+  color: black;
+  font-weight: 300;
+
+  span{
+    transition: color 0.2s ease-in;
+    &:hover{
+      color: #6A82FB;
+    }
+  }
+}
+
+.account{
+  grid-template-rows: auto auto auto;
+  grid-template-columns: auto;
+  position: absolute;
+  top: 90%;
+  right: 50%;
+  transform: translate(50%);
+  text-align: center;
+  text-decoration: none;
+  color: black;
+  font-weight: 300;
+  transition: color 0.2s ease-in;
+  i{
+    margin-left: 0.3rem;
+    transition: transform 0.2s ease;
+
+  }
+  &:hover{
+    color: #6A82FB;
+    i{
+      transform: translate(0.8rem);
+    }
+  }
+}
+
+@keyframes shadow {
+  0% {
+    box-shadow: 0 0 0 #6A82FB;
+  }
+  50%{
+    box-shadow: 0 0 30px #6A82FB;
+  }
+  0%{
+    box-shadow: 0 0 0px #6A82FB;
+  }
+}

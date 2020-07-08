@@ -9,7 +9,7 @@
   right: 0;
   z-index: 1000;
 
-  background-color: transparentize(#28D1E7, 1);
+  background-color: transparentize($color_secondary, 1);
 
   transition: background-color 0.2s linear;
 
@@ -22,7 +22,7 @@
       top: 10px
     }
 
-    background-color: opacify(#28d1e7, 1.0);
+    background-color: opacify($color_secondary, 1.0);
 
 
   }
@@ -31,7 +31,7 @@
 
 
     &.active {
-      background-color: #28D1E7;
+      background-color: $color_secondary;
     }
   }
 }

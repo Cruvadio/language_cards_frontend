@@ -1,20 +1,31 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {connect} from "react-redux";
 import ProfileCards from "./ProfileCards";
-import {moreCardsetsAC, setCardsetsAC} from "../../../redux/reducers/cards_reducer";
+import {getCurrentUserCards, moreCardsets, setCardsets} from "../../../redux/reducers/cards_reducer";
+import * as axios from "axios";
+
+
+class ProfileCardsContainer extends Component {
+
+    componentDidMount() {
+        this.props.getCurrentUserCards();
+    }
+
+    onMoreClick = () => {
+
+        this.props.getCurrentUserCards(this.props.nextPage)
+    }
+
+    render() {
+        return <ProfileCards {...this.props} onMoreClick={this.onMoreClick}/>
+    }
+}
 
 
 let mapStateToProps = (state) => ({
     cardsets: state.cards.cardsets,
+    totalCount: state.cards.totalCount,
     nextPage: state.cards.nextPage,
 })
 
-let mapDispatchToProps = (dispatch) => ({
-    setCardsets: (cardsets, totalCount, nextPage) => { dispatch(setCardsetsAC(cardsets, totalCount, nextPage))},
-    moreCardsets: (newCards, nextPage) => {dispatch(moreCardsetsAC(newCards, nextPage))}
-})
-
-
-let ProfileCardsContainer = connect(mapStateToProps, mapDispatchToProps)(ProfileCards);
-
-export default ProfileCardsContainer;
+export default connect(mapStateToProps, {getCurrentUserCards})(ProfileCardsContainer);

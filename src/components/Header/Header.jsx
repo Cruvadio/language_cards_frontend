@@ -3,6 +3,7 @@ import s from './Header.module.scss';
 import Toggle from "./Toggle/Toggle";
 import HeaderTitle from "./HeaderTitle/HeaderTitle";
 import NavContainer from "./Nav/NavContainer";
+import {connect} from "react-redux";
 
 class Header extends Component{
 
@@ -12,7 +13,7 @@ class Header extends Component{
     render()
     {
         return (
-            <header className={s.header + " " + s.fixed} id="header">
+            <header className={s.header} id="header">
                 <div className={s.inner}>
                     <HeaderTitle content="Language Cards"/>
                     <NavContainer />
@@ -23,4 +24,8 @@ class Header extends Component{
     }
 }
 
-export default Header;
+let mapStateToProps = (state) =>({
+    isAuthenticate: state.auth.isAuthenticate,
+})
+
+export default connect(mapStateToProps, null)(Header);

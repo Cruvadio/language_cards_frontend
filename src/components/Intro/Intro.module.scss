@@ -8,7 +8,7 @@
   margin: 0 auto;
   width: 100%;
   height: 100vh;
-  background-image:linear-gradient(to bottom, darken( desaturate($color_primary, 20%), 10%), darken($color_secondary, 10%));
+  background-image:linear-gradient(45deg, $color_primary, $color_secondary);
   background-repeat: no-repeat;
   background-size: cover;
   -webkit-background-size: cover;
@@ -28,7 +28,7 @@
     background-image:  url("images/intro.jpg");
     background-attachment: fixed;
     background-size: cover;
-    opacity: 0.08;
+    opacity: 0.2;
   }
 
   @media ($feature: $ntablet) {
@@ -46,4 +46,6 @@
   text-align: center;
 }
 
-
+.button{
+  font-size: 1.5rem;
+}

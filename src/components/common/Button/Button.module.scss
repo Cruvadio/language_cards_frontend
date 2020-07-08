@@ -1,24 +1,23 @@
-@import "../../variables";
+@import "../../../variables";
 
 .button {
+  cursor: pointer;
   font: inherit;
   display: inline-block;
   text-decoration: none;
   font-weight: 700;
   font-size: 1rem;
-  border: none;
   padding: 0.5em 2em;
+  outline: none;
   background-color: $color_primary;
+  border-radius: 2rem;
   color: white;
-  border: 0.133rem solid $color_primary;
-  transition: box-shadow 0.2s linear, border 0.2s linear, background 0.2s linear;
+  transition: box-shadow 0.2s linear, border 0.2s linear, background 0.2s ease;
   margin: 0 auto;
+
   &:hover
   {
-    cursor: pointer;
-    box-shadow: 0 0 15px darken($color_card_bg, 30%);
-    border: 0.133rem solid $color_background;
-    background-color: lighten($color_primary, 20%);
+    background-color: lighten($color_secondary, 10%);
   }
 
   .intro

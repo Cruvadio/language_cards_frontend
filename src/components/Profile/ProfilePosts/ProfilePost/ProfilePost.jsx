@@ -1,6 +1,6 @@
 import React from 'react';
 import s from './ProfilePost.module.scss'
-import FontAwesomeIcon from "../../../FontAwesomeIcon";
+import FontAwesomeIcon from "../../../common/FontAwesomeIcon";
 
 const ProfilePost = (props) =>
 {

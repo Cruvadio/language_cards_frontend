@@ -1,17 +1,18 @@
 import React from 'react';
 import s from './Profile.module.scss'
 import ProfilePostsContainer from "./ProfilePosts/ProfilePostsContainer";
-import ProfilePersonalInfo from "./ProfilePersonalInfo/ProfilePersonalInfo";
 import ProfileCardsContainer from "./ProfileCards/ProfileCardsContainer";
+import ProfilePersonalInfoContainer from "./ProfilePersonalInfo/ProfilePersonalInfoContainer";
 
 const Profile = (props) =>
 {
     return (
-        <div className={s.profile + ' container'}>
-            <ProfilePersonalInfo />
+        <div className={s.profile}>
+            <div className={s.inner + ' container'}>
+            <ProfilePersonalInfoContainer />
             <ProfilePostsContainer/>
             <ProfileCardsContainer />
-
+            </div>
         </div>
     )
 }

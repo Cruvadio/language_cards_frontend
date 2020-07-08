@@ -1,5 +1,5 @@
 @import "../../../../variables";
 
 .b {
-  color: $color_secondary;
+  color: lighten($color_secondary, 10%);
 }
