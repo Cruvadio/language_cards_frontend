@@ -1,0 +1,37 @@
+.registration {
+  display: flex;
+  background: linear-gradient(45deg, #FC5C7D, #6A82FB);
+  height: 100vh;
+}
+
+.registration h1{
+  padding: 3rem 0;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.inner {
+  background-color: white;
+  display: grid;
+  width: 1000px;
+  margin: auto;
+  padding: 2rem;
+  grid-template-rows: auto;
+  align-content: center;
+  justify-content: center;
+  grid-row-gap: 1.8rem;
+  position: relative;
+}
+
+.block{
+
+}
+
+.item{
+  width: 100%;
+}
+.button{
+  width: 600px;
+  margin-bottom: 2rem;
+}
+

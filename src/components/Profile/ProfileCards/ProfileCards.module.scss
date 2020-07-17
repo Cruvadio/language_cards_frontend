@@ -2,27 +2,15 @@
 
 
 .cards {
-  //background-color: fade_out($color_secondary, 0.67);
   border-radius: 1.5rem;
   border: 1px solid $color_primary;
 }
 
-.header {
-  padding: 1rem;
-  display: flex;
-  justify-content: space-between;
-  background-color: $color_primary;
-  overflow: hidden;
-  border: 1px solid $color_primary;
-  border-radius: 1.2rem 1.2rem 0 0;
-  color: white;
-}
-
 .inner {
+  padding: 1rem 0;
   display: grid;
   justify-items: center;
-  padding-bottom: 1rem;
-
+  grid-row-gap: 2rem;
 }
 
 .button {
@@ -68,11 +56,34 @@
 
 }
 
+.details{
+  background-color: white;
+  padding: 2rem 0;
+}
+
+.headerButton{
+
+  &:hover{
+    background-color: white;
+  }
+  &:focus{
+   color: white;
+  }
+}
+
+.headerContent{
+  color: white;
+}
+
+.loader{
+  margin: 0 auto;
+}
+
 .elements {
 
   padding: 1.32rem 0.66rem;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: auto auto auto;
   grid-column-gap: 0.3rem;
   grid-row-gap: 0.6rem;
 }

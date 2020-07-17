@@ -1,4 +1,4 @@
-import IntroTitleBold from "../../components/Intro/IntroTitle/IntroTitleBold/IntroTitleBold";
+import IntroTitleBold from "../../components/Landing/Intro/IntroTitle/IntroTitleBold/IntroTitleBold";
 import React from "react";
 
 

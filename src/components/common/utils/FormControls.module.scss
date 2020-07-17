@@ -1,0 +1,52 @@
+@import "../../../variables";
+.input {
+  position: relative;
+  width: 500px;
+  height: 3rem;
+  padding: 1rem;
+  font-family: $font_Monserrat;
+  font-weight: 700;
+  outline: none;
+  border-radius: 20px;
+  box-shadow: none;
+  background-color: #e7e7e7;
+  border: none;
+  &:focus{
+    animation: shadow 1.5s ease;
+  }
+  &:valid{
+    background-color: #e7e7e7;
+  }
+
+  &.button {
+    margin-top: 2rem;
+    cursor: pointer;
+    color: white;
+    background-color: #FC5C7D;
+    transition: background 0.2s ease;
+    display: block;
+    text-align: center;
+
+
+    &:hover {
+      background-color: #6A82FB;
+    }
+  }
+}
+
+.input.error {
+  box-shadow: 0 0 10px red;
+}
+
+
+.input~.text{
+  right: 50%;
+  transform: translate(50%, -2px);
+  position: absolute;
+  margin-top: 0.66rem;
+  text-align: center;
+  font-size: 0.8rem;
+  text-decoration: none;
+  color: red;
+  font-weight: 300;
+}

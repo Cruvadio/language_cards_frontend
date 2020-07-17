@@ -14,22 +14,21 @@
   color: white;
   transition: box-shadow 0.2s linear, border 0.2s linear, background 0.2s ease;
   margin: 0 auto;
+  border: none;
 
-  &:hover
-  {
+  &:hover {
     background-color: lighten($color_secondary, 10%);
   }
 
-  .intro
-  {
+  .intro {
     font-size: 1.5rem;
     //padding: 0.933rem 2.6rem;
   }
 
   @media ($feature: $mobile) {
-  text-align: center;
-  display: block;
-  margin: 0 auto;
-  font-size: 1.2;
-}
+    text-align: center;
+    display: block;
+    margin: 0 auto;
+    font-size: 1.2rem;
+  }
 }

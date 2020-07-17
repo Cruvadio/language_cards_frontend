@@ -1,7 +1,6 @@
-import React from 'react';
 import {connect} from "react-redux";
 import Nav from "./Nav";
-import {logOut} from "../../../redux/reducers/auth_reducer";
+import {userLogOut} from "../../../redux/reducers/auth_reducer";
 
 let mapStateToProps = (state) => ({
     navData: state.header.navData,
@@ -10,7 +9,6 @@ let mapStateToProps = (state) => ({
 
 
 
-
-let NavContainer = connect(mapStateToProps, {logOut})(Nav)
+let NavContainer = connect(mapStateToProps, {userLogOut})(Nav)
 
 export default NavContainer;

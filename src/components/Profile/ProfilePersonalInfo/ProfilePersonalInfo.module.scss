@@ -8,19 +8,12 @@
   text-align: center;
 }
 
-.avatarWrapper{
-  padding: 1.2rem 0;
-}
 
-.avatar{
-  margin: 0 auto;
-  display: block;
-  width: 200px;
-  height: auto;
-  border-radius: 50%;
-  border: 2px solid $color_primary;
+.inner{
+  background-color: white;
+  color: black;
+  padding: 0 1.5rem;
 }
-
 .userName
 {
   font-size: 1.5rem;
@@ -78,4 +71,9 @@
 
 .prelode{
   margin: auto auto;
+}
+
+
+.input{
+  display: none;
 }

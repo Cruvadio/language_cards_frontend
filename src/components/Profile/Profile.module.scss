@@ -7,18 +7,5 @@
 }
 
 .inner{
-  background-color: white;
   margin-top: 2.92rem;
-  display: grid;
-  padding: 4rem;
-
-  grid-template-columns: 1fr 1fr;
-
-  grid-column-gap: 1rem;
-  border-radius: 20% 20% 0 0;
-
-  @media ($feature: $narrow) {
-    grid-template-columns: 1fr;
-
-  }
 }

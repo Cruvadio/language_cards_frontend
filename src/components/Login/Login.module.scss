@@ -8,15 +8,14 @@
 
 .inner {
   background-color: white;
-  display: grid;
-  width: 800px;
+  display: grid;  width: 800px;
   height: 600px;
   margin: auto;
   padding: 2rem;
   grid-template-rows: auto;
   align-content: center;
   justify-content: center;
-  grid-row-gap: 0.8rem;
+  grid-row-gap: 1.8rem;
   position: relative;
 }
 
@@ -28,36 +27,8 @@
 
 }
 
-.input {
-  width: 500px;
-  height: 3rem;
-  padding: 1rem;
-  font-family: $font_Monserrat;
-  font-weight: 700;
-  outline: none;
-  border-radius: 20px;
-  box-shadow: none;
-  background-color: #e7e7e7;
-  border: none;
-  &:focus{
-    animation: shadow 1.5s ease;
-  }
-  &:valid{
-    background-color: #e7e7e7;
-  }
-
-  &.button {
-    margin-top: 2rem;
-    cursor: pointer;
-    color: white;
-    background-color: #FC5C7D;
-    transition: background 0.2s ease;
-
-
-    &:hover {
-      background-color: #6A82FB;
-    }
-  }
+.header{
+  position: relative;
 }
 
 .forgot{
@@ -100,6 +71,19 @@
   }
 }
 
+
+.error{
+  width: 100%;
+  right: 50%;
+  transform: translate(50%, -25px);
+  position: absolute;
+  margin-top: 0.66rem;
+  text-align: center;
+  font-size: 0.8rem;
+  text-decoration: none;
+  color: red;
+  font-weight: 300;
+}
 @keyframes shadow {
   0% {
     box-shadow: 0 0 0 #6A82FB;

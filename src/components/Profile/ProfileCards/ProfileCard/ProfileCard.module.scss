@@ -1,23 +1,7 @@
 @import "../../../../variables";
 
 .element {
-  max-width: 95%;
-  background-color: $color_card_bg;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  min-height: 15rem;
-  border-radius: 1.32rem;
-  padding: 1.66rem;
-  cursor: pointer;
-  box-shadow: 4px 4px darken($color_secondary, 20%);
-  transition: transform 0.2s linear,
-  background-color 0.2s linear;
-
-  &:hover {
-    transform: translate3d(0, -6px, 0);
-    background-color: lighten($color_primary, 30%);
-  }
+  width: 150px;
 }
 
 .name {

@@ -1,9 +1,10 @@
 import React from "react";
 import s from './Button.module.scss'
+import {addClassName} from "../utils/helpers/helpers";
 
 const Button = (props) => {
     return (
-        <a href={props.link} onClick={props.onClick} className={s.button + ' ' +props.className}>{props.name}</a>
+        <button onClick={props.onClick} className={addClassName(s.button, props.className)}>{props.name}</button>
     )
 }
 

@@ -1,5 +1,3 @@
-import FontAwesomeIcon from "../../components/common/FontAwesomeIcon";
-import React from "react";
 
 
 let initialState = {

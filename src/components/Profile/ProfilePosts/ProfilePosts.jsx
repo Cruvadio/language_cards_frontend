@@ -1,9 +1,7 @@
 import React from 'react';
 import s from './ProfilePosts.module.scss'
-import FontAwesomeIcon from "../../common/FontAwesomeIcon";
 import Button from "../../common/Button/Button";
 import ProfilePost from "./ProfilePost/ProfilePost";
-import {addPostActionCreator, updatePostTextActionCreator} from "../../../redux/reducers/profile-reducer";
 
 const ProfilePosts = (props) => {
 

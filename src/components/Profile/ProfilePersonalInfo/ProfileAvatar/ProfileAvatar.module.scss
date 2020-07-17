@@ -1,0 +1,22 @@
+@import "../../../../variables";
+
+.avatarWrapper{
+  padding: 1.2rem 0;
+  position: relative;
+}
+
+.avatar{
+  display: block;
+  border-radius: 50%;
+  border: 2px solid $color_primary;
+}
+
+.button{
+  position: absolute;
+  bottom: 0.5rem;
+  left: 0;
+}
+
+.input{
+  display: none;
+}

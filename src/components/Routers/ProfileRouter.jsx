@@ -1,12 +1,14 @@
-import {Redirect, Route} from "react-router-dom";
+import {Redirect, Route, withRouter} from "react-router-dom";
 import React from "react";
+import {connect} from "react-redux";
+import {compose} from "redux";
 
-function ProfileRoute({ children, isAuthenticated, ...rest }) {
+function ProfileRoute({ children, isAuthenticate, ...rest }) {
     return (
         <Route
             {...rest}
             render={({ location }) =>
-                !isAuthenticated ? (
+                !isAuthenticate ? (
                     children
                 ) : (
                     <Redirect
@@ -21,4 +23,8 @@ function ProfileRoute({ children, isAuthenticated, ...rest }) {
     );
 }
 
-export default ProfileRoute;
+let mapStateToProps = state => ({
+    isAuthenticate: state.auth.isAuthenticate,
+})
+
+export default compose(connect(mapStateToProps), withRouter)(ProfileRoute);

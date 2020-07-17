@@ -1,20 +1,25 @@
 import React from 'react';
 import s from './ProfileCard.module.scss'
+import Card from "@material-ui/core/Card";
+import CardActionArea from "@material-ui/core/CardActionArea";
+import CardContent from "@material-ui/core/CardContent";
 
 const ProfileCards = (props) => {
     return (
-        <div className={s.element}>
-            <div>
+        <Card className={s.element} variant="outlined">
+            <CardActionArea>
+            <CardContent>
                 <div className={s.name}> {props.cardName}</div>
                 <div className={s.language}>{props.language}</div>
-            </div>
-            <div className={s.last}>
+            </CardContent>
+            <CardContent className={s.last}>
                 Last repetition:
                 <div className={s.date}>
                     {props.lastDate}
                 </div>
-            </div>
-        </div>
+            </CardContent>
+            </CardActionArea>
+        </Card>
 
     )
 }

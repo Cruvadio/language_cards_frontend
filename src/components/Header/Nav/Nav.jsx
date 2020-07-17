@@ -12,7 +12,7 @@ const Nav = (props) => {
                 <NavItem link="#"
                          onClick={(e) => {
                              e.preventDefault();
-                             props.logOut()
+                             props.userLogOut()
                          }}
                          content={<FontAwesomeIcon className="fas fa-sign-out-alt"/>}
                 />
