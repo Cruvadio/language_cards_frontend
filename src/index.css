@@ -48,13 +48,13 @@ body.no-scroll {
   background-color: rgba(106, 130, 251, 0);
   transition: background-color 0.2s linear;
 }
-.header.fixed {
-  position: fixed;
+.header.authorized {
+  position: static;
   padding: 0.66rem 2.66rem;
-  box-shadow: 0 3px 10px #717171;
-  background-color: #6a82fb;
+  background-color: #fc5c7d;
+  box-shadow: 0 0 20px black;
 }
-.header.fixed .nav-toggle {
+.header.authorized .nav-toggle {
   top: 10px;
 }
 @media (max-width: 778px) {
