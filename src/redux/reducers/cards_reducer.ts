@@ -1,7 +1,7 @@
 import {cardsAPI} from "../../api/api";
 import {CardsetType} from "../../types/global";
 import {ThunkAction} from "redux-thunk";
-import {RootState} from "../store";
+import {ActionType, RootState} from "../store";
 
 const SET_CARDSETS = "cards_reducer/SET-CARDSETS";
 const ADD_CARDSET = "cards_reducer/ADD-CARDSET"
@@ -20,7 +20,7 @@ let initialState = {
 type InitialStateType = typeof initialState;
 
 
-const cardsReducer = (state = initialState, action: ActionType): InitialStateType => {
+const cardsReducer = (state = initialState, action: Actions): InitialStateType => {
     switch (action.type) {
 
         case SET_CARDSETS: {
@@ -52,52 +52,37 @@ const cardsReducer = (state = initialState, action: ActionType): InitialStateTyp
     }
 }
 
-type ActionType = SetCardsetsActionType | AddCardsetActionType | MoreCardsetsActionType | ToggleFetchingActionType
+type Actions = ActionType<typeof actions>
 
-export type SetCardsetsActionType = {
-    type: typeof SET_CARDSETS,
-    cardsets: Array<CardsetType>
-    totalCount: number,
-    nextPage: string
-}
-export const setCardsets = (cardsets: Array<CardsetType>, nextPage: string, totalCount: number): SetCardsetsActionType => ({
-    type: SET_CARDSETS,
-    cardsets,
-    totalCount,
-    nextPage
-})
-export type AddCardsetActionType = {
-    type: typeof ADD_CARDSET,
-    cardset: CardsetType
-}
-export const addCardset = (cardset: CardsetType): AddCardsetActionType => ({type: ADD_CARDSET, cardset})
 
-type MoreCardsetsActionType = {
-    type: typeof MORE_CARDSETS,
-    newCards: Array<CardsetType>,
-    nextPage: string
-}
-export const moreCardsets = (newCards: Array<CardsetType>, nextPage: string): MoreCardsetsActionType => ({
-    type: MORE_CARDSETS,
-    nextPage,
-    newCards
-})
+export const actions = {
+    setCardsets: (cardsets: Array<CardsetType>, nextPage: string, totalCount: number) => ({
+        type: SET_CARDSETS,
+        cardsets,
+        totalCount,
+        nextPage
+    } as const),
+    addCardset: (cardset: CardsetType) => ({type: ADD_CARDSET, cardset} as const),
 
-type ToggleFetchingActionType = {
-    type: typeof TOGGLE_FETCHING,
-    isFetching: boolean
+    moreCardsets: (newCards: Array<CardsetType>, nextPage: string)  => ({
+        type: MORE_CARDSETS,
+        nextPage,
+        newCards
+    } as const),
+
+    toggleFetching: (fetch: boolean)  => ({type: TOGGLE_FETCHING, isFetching: fetch} as const),
+
 }
-export const toggleFetching = (fetch: boolean): ToggleFetchingActionType => ({type: TOGGLE_FETCHING, isFetching: fetch})
 
 
 export const getCurrentUserCards =
-    (nextPage: string | null, pageSize: number):ThunkAction<any, RootState, any, ActionType> =>
+    (nextPage: string | null, pageSize: number):ThunkAction<any, RootState, any, Actions> =>
     (dispatch) => {
-    let action = nextPage ? moreCardsets : setCardsets;
-    dispatch(toggleFetching(true));
+    let action = nextPage ? actions.moreCardsets : actions.setCardsets;
+    dispatch(actions.toggleFetching(true));
     cardsAPI.getCurrentUserCards(nextPage, pageSize).then(data => {
         dispatch(action(data.results, data.next, data.count));
-        dispatch(toggleFetching(false));
+        dispatch(actions.toggleFetching(false));
     })
         .catch(error => {
             console.log(error.response);

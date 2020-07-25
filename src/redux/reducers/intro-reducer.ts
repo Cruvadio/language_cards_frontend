@@ -1,7 +1,3 @@
-import IntroTitleBold from "../../components/Landing/Intro/IntroTitle/IntroTitleBold/IntroTitleBold";
-import React from "react";
-
-
 let initialState = {
     introTitle: "Which worlds would you like to learn?",
     buttonName: "Join",

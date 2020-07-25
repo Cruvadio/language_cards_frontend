@@ -2,13 +2,13 @@ import React from "react"
 import {Select, TextField} from "@material-ui/core"
 import MenuItem from "@material-ui/core/MenuItem"
 import Chip from "@material-ui/core/Chip"
-import MuiPickersUtilsProvider from "@material-ui/pickers/MuiPickersUtilsProvider"
-import {KeyboardDatePicker} from "@material-ui/pickers"
-import DateFnsUtils from "@date-io/date-fns"
 import InputLabel from "@material-ui/core/InputLabel"
 import FormControl from "@material-ui/core/FormControl"
 import Input from "@material-ui/core/Input"
 import {WrappedFieldProps} from "redux-form"
+import DateFnsUtils from '@date-io/date-fns';
+import { KeyboardDatePicker, MuiPickersUtilsProvider } from "@material-ui/pickers";
+import {MaterialUiPickersDate} from "@material-ui/pickers/typings/date";
 
 
 const AddError = (Element: React.FC<any>) : React.FC<WrappedFieldProps> => ({input, meta, ...props}) => {
@@ -62,13 +62,15 @@ export const SelectInput : React.FC<WrappedFieldProps & PropsType> = ({
 
 
 export const DateField : React.FC<WrappedFieldProps> = ({
-                             input , meta: {touched, error}, ...props
+                             input:{onChange, ...input} , meta: {touched, error}, ...props
                           }) => {
 
     return (
         <MuiPickersUtilsProvider utils={DateFnsUtils}>
             <KeyboardDatePicker
-                format="MM/dd/yyyy"
+                variant={"inline"}
+                format="dd/MM/yyyy"
+                onChange={(date: MaterialUiPickersDate, value?: string | null | undefined) => { return (date && onChange(date.toJSON().split("T")[0]))}}
                 {...input}
                 {...props}
             />

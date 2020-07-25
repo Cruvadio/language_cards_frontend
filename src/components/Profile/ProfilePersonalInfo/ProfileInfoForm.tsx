@@ -1,9 +1,8 @@
 import s from "./ProfilePersonalInfo.module.scss";
 import React from "react";
 import {Field, InjectedFormProps, reduxForm} from "redux-form";
-import {SelectInput, Textarea} from "../../common/utils/FormControls";
+import {DateField, SelectInput, Textarea} from "../../common/utils/FormControls";
 import {connect} from "react-redux";
-import {compose} from "redux";
 import {Button} from "@material-ui/core";
 import {RootState} from "../../../redux/store";
 
@@ -29,8 +28,7 @@ let ProfileInfoForm : React.FC<InjectedFormProps<FormDataType, PropsType> & Prop
                     <span className={s.elementCategory}>Birth Date:</span>
                     <Field
                         name="birth_date"
-                        type="date"
-                        component={Textarea}/>
+                        component={DateField}/>
 
                 </li>
                 <li className={s.personalInfo_element}>

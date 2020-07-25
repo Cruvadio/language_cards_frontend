@@ -25,6 +25,10 @@ let reducersBatch = combineReducers({
 
 export type RootState = ReturnType<typeof reducersBatch>
 
+
+type InferPropertiesType<T> = T extends {[key: string]: infer U} ? U : never
+export type ActionType<T extends {[key: string]:(...args : any[]) => any}> = ReturnType<InferPropertiesType<T>>
+
 // @ts-ignore
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(reducersBatch, composeEnhancers(

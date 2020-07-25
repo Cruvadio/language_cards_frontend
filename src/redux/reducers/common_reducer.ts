@@ -1,6 +1,6 @@
 import {commonAPI} from "../../api/api";
 import {ThunkAction} from "redux-thunk";
-import {RootState} from "../store";
+import {ActionType, RootState} from "../store";
 
 const initialState = {
     languages: [] as Array<string>
@@ -11,7 +11,9 @@ type InitialStateType = typeof initialState;
 const SET_LANGUAGES = "common_reducer/SET_LANGUAGES";
 
 
-export const commonReducer = (state = initialState, action : SetLanguagesActionType)
+type Actions = ActionType<typeof actions>
+
+export const commonReducer = (state = initialState, action : Actions)
     : InitialStateType => {
     switch (action.type) {
         case SET_LANGUAGES:
@@ -25,16 +27,11 @@ export const commonReducer = (state = initialState, action : SetLanguagesActionT
     }
 }
 
-
-export type SetLanguagesActionType = {
-    type: typeof SET_LANGUAGES,
-    languages: Array<string>
+export const actions = {
+    setLanguages: (languages : Array<string>) => ({type: SET_LANGUAGES, languages} as const)
 }
 
-export const setLanguages = (languages : Array<string>) : SetLanguagesActionType=> ({type: SET_LANGUAGES, languages})
-
-
-export const loadLanguages = (): ThunkAction<Promise<void>, RootState, any, SetLanguagesActionType> =>
+export const loadLanguages = (): ThunkAction<Promise<void>, RootState, any, Actions> =>
     async (dispatch : any) => {
     try {
         let data = await commonAPI.loadLanguages();
@@ -42,7 +39,7 @@ export const loadLanguages = (): ThunkAction<Promise<void>, RootState, any, SetL
         type LanguageType = {
             name: string,
         }
-        dispatch(setLanguages(data.results.map((l : LanguageType) : string => l.name)))
+        dispatch(actions.setLanguages(data.results.map((l : LanguageType) : string => l.name)))
     }catch (e) {
         console.log(e.response)
     }

@@ -1,24 +1,21 @@
 import {isLogged} from "./auth_reducer";
 import {loadLanguages} from "./common_reducer";
 import {ThunkAction} from "redux-thunk";
-import {RootState} from "../store";
+import {ActionType, RootState} from "../store";
 
 const INITIALIZE = 'app_reducer/INITIALIZE';
 
-type InitialStateType = {
-    isInitialized: boolean
-}
 
-const initialState : InitialStateType = {
+const initialState  = {
     isInitialized: false
 }
 
-type SetInitializedActionType = {
-    type: typeof INITIALIZE
-}
+type InitialStateType = typeof initialState;
 
 
-const appReducer = (state = initialState, action : any): InitialStateType => {
+type Actions = ActionType<typeof action>
+
+const appReducer = (state = initialState, action : Actions): InitialStateType => {
     switch (action.type) {
         case INITIALIZE:
             return {
@@ -31,18 +28,20 @@ const appReducer = (state = initialState, action : any): InitialStateType => {
     }
 }
 
+export const action = {
+    setInitialized :() => ({type: INITIALIZE} as const)
+}
 
-export const setInitialized = () :SetInitializedActionType => ({type: INITIALIZE})
 
 
-export const initialize =  () : ThunkAction<Promise<void>, RootState, any, SetInitializedActionType> =>
+export const initialize =  () : ThunkAction<Promise<void>, RootState, any, Actions> =>
     async (dispatch ) => {
     let promises = [
         dispatch(isLogged()),
         dispatch(loadLanguages()),
     ]
     await Promise.all(promises);
-    dispatch(setInitialized());
+    dispatch(action.setInitialized());
 
 }
 

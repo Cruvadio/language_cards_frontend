@@ -1,8 +1,8 @@
 import {userAPI} from "../../api/api";
 import {stopSubmit} from "redux-form";
-import {ProfileType, PhotosType} from "../../types/global";
-import { ThunkAction } from "redux-thunk";
-import {RootState} from "../store";
+import {PhotosType, ProfileType} from "../../types/global";
+import {ThunkAction} from "redux-thunk";
+import {ActionType, RootState} from "../store";
 import {AnyAction} from "redux";
 
 const TOGGLE_FETCHING = "profile_reducer/TOGGLE_FETCHING";
@@ -20,7 +20,7 @@ let initialState = {
 
 type InitialStateType = typeof initialState
 
-const profileReducer = (state: InitialStateType = initialState, action : ActionType): InitialStateType => {
+const profileReducer = (state: InitialStateType = initialState, action : Actions): InitialStateType => {
     switch (action.type) {
         case SET_PROFILE:
             return {
@@ -57,50 +57,38 @@ const profileReducer = (state: InitialStateType = initialState, action : ActionT
 
 }
 
-type ActionType = ToggleFetchingActionType | SetProfileActionType
-    | AvatarChangeSuccessActionType | SetEditingSuccessActionType
+type Actions = ActionType<typeof actions>
 
-export type ToggleFetchingActionType = {
-    type: typeof TOGGLE_FETCHING
-    isFetching: boolean
+
+export const actions = {
+    toggleFetching: (isFetching: boolean) => ({type: TOGGLE_FETCHING, isFetching}as const),
+
+
+
+    setProfile: (profile: ProfileType) => ({type: SET_PROFILE, profile}as const),
+
+
+
+
+    avatarChangeSuccess: (photos : PhotosType) => ({type: AVATAR_CHANGE_SUCCESS, photos}as const),
+
+
+
+    setEditingSuccess: (isEditingSuccess : boolean) => ({type: SET_EDITING, isEditingSuccess}as const),
+
 }
 
-export const toggleFetching = (isFetching: boolean): ToggleFetchingActionType => ({type: TOGGLE_FETCHING, isFetching})
-
-export type SetProfileActionType = {
-    type: typeof SET_PROFILE
-    profile: ProfileType
-}
-
-export const setProfile = (profile: ProfileType): SetProfileActionType => ({type: SET_PROFILE, profile})
-
-
-
-export type AvatarChangeSuccessActionType = {
-    type: typeof AVATAR_CHANGE_SUCCESS
-    photos: PhotosType
-}
-
-export const avatarChangeSuccess = (photos : PhotosType) : AvatarChangeSuccessActionType => ({type: AVATAR_CHANGE_SUCCESS, photos})
-
-export type SetEditingSuccessActionType = {
-    type: typeof SET_EDITING
-    isEditingSuccess: boolean
-}
-
-
-export const setEditingSuccess = (isEditingSuccess : boolean) : SetEditingSuccessActionType => ({type: SET_EDITING, isEditingSuccess})
 
 
 type ThunkActionType = ThunkAction<Promise<void>, RootState, void, AnyAction>
 
 export const getUser = (userID : number) : ThunkActionType =>
     async (dispatch ) => {
-        dispatch(toggleFetching(true));
+        dispatch(actions.toggleFetching(true));
         try {
             let data = await userAPI.getProfile(userID)
-            dispatch(setProfile(data));
-            dispatch(toggleFetching(false));
+            dispatch(actions.setProfile(data));
+            dispatch(actions.toggleFetching(false));
 
         } catch (error) {
             console.log(error)
@@ -111,7 +99,7 @@ export const changeAvatar = (image : File) : ThunkActionType=>
     try {
         let data = await userAPI.changeAvatar(image);
         console.log(data);
-        dispatch(avatarChangeSuccess(data));
+        dispatch(actions.avatarChangeSuccess(data));
     } catch (e) {
         console.log(e.response);
     }
@@ -152,8 +140,8 @@ export const editProfile = ({
             about_me,
             age: _calculateAge(birth_date)
         }
-        dispatch(setProfile(profile));
-        dispatch(setEditingSuccess(true));
+        dispatch(actions.setProfile(profile));
+        dispatch(actions.setEditingSuccess(true));
     } catch (e) {
         console.log(e.response);
         dispatch(stopSubmit("profile-info-form", {_error: e.response.data.message}))

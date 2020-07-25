@@ -1,7 +1,7 @@
 import {userAPI} from '../../api/api'
 import {stopSubmit} from "redux-form";
 import {ThunkAction} from "redux-thunk";
-import {RootState} from "../store";
+import {ActionType, RootState} from "../store";
 
 const SET_USER_DATA = 'auth_reducers/SET_USER_DATA';
 const SET_AUTHENTICATE = 'auth_reducers/SET_AUTHENTICATE';
@@ -23,26 +23,8 @@ type InitialStateType = typeof initialState
 
 type currentUserType = typeof initialState.currentUser
 
-type SetUserDataActionType = {
-    type: typeof SET_USER_DATA
-    data: currentUserType
-}
-type SetAuthenticateActionType = {
-    type: typeof SET_AUTHENTICATE
-    isAuthenticate: boolean
-}
-type LogOutActionType = {
-    type: typeof LOG_OUT
-}
-type SetIsNewUserActionType = {
-    type: typeof SET_NEW_USER
-    isNewUser: boolean
-}
-
-type ActionType = SetUserDataActionType | SetAuthenticateActionType |
-    LogOutActionType | SetIsNewUserActionType
-
-const authReducer = (state = initialState, action: ActionType) : InitialStateType => {
+type Actions = ActionType<typeof actions>
+const authReducer = (state = initialState, action: Actions) : InitialStateType => {
     switch (action.type) {
         case SET_USER_DATA:
             return {
@@ -75,13 +57,16 @@ const authReducer = (state = initialState, action: ActionType) : InitialStateTyp
     }
 }
 
+export const actions = {
+    setUserData: (currentUser : currentUserType) => ({type: SET_USER_DATA, data: currentUser} as const),
+    setAuthenticate: (isAuth: boolean) => ({type: SET_AUTHENTICATE, isAuthenticate: isAuth} as const),
+    logOut: () => ({type: LOG_OUT} as const),
+    setIsNewUser: (isNewUser: boolean)  => ({type: SET_NEW_USER, isNewUser} as const),
+}
 
-export const setUserData = (currentUser : currentUserType) : SetUserDataActionType => ({type: SET_USER_DATA, data: currentUser})
-export const setAuthenticate = (isAuth: boolean) : SetAuthenticateActionType=> ({type: SET_AUTHENTICATE, isAuthenticate: isAuth})
-export const logOut = () : LogOutActionType => ({type: LOG_OUT})
-export const setIsNewUser = (isNewUser: boolean) : SetIsNewUserActionType => ({type: SET_NEW_USER, isNewUser})
 
-type ThunkActionType = ThunkAction<Promise<void>, RootState, any, ActionType>
+
+type ThunkActionType = ThunkAction<Promise<void>, RootState, any, Actions>
 
 
 export const loginUser = (username : string, password : string) : ThunkActionType => {
@@ -114,7 +99,7 @@ export const createUser = (username: string,
     try{
         let response = await userAPI.createNewUser(username, email, last_name, first_name, password)
         await dispatch(loginUser(username, password));
-        dispatch(setIsNewUser(true));
+        dispatch(actions.setIsNewUser(true));
     } catch (e) {
         if (e.response.status === 400){
             dispatch(stopSubmit("registration/signup", e.response.data))
@@ -127,16 +112,16 @@ export const isLogged = () : ThunkActionType => async (dispatch) => {
     try {
         let response = await userAPI.isLoggedIn()
         console.log(response);
-        dispatch(setUserData({
+        dispatch(actions.setUserData({
             userID: response.id,
             email: response.email,
             login: response.username,
         }))
-        dispatch(setAuthenticate(true));
+        dispatch(actions.setAuthenticate(true));
 
     } catch (error) {
 
-        dispatch(setAuthenticate(false));
+        dispatch(actions.setAuthenticate(false));
         if (error.response.status === 401) {
             dispatch(refreshToken())
         } else {
@@ -169,7 +154,7 @@ export const userLogOut = () : ThunkActionType => async (dispatch : Function) =>
 
         localStorage.removeItem("access");
         localStorage.removeItem("refresh");
-        dispatch(logOut());
+        dispatch(actions.logOut());
     } catch (error) {
         console.log(error.response);
     }
