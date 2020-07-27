@@ -9,6 +9,7 @@ import authReducer from "./reducers/auth_reducer";
 import {reducer as formReducer} from "redux-form";
 import appReducer from "./reducers/app_reducer";
 import {commonReducer} from "./reducers/common_reducer";
+import usersReducer from "./reducers/users_reducer";
 
 
 let reducersBatch = combineReducers({
@@ -20,7 +21,8 @@ let reducersBatch = combineReducers({
     auth: authReducer,
     app: appReducer,
     form: formReducer,
-    common: commonReducer
+    common: commonReducer,
+    users: usersReducer,
 });
 
 export type RootState = ReturnType<typeof reducersBatch>

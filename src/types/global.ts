@@ -62,3 +62,8 @@ export type PhotosType = {
     avatar_medium: string
 }
 
+export type UserListType = {
+    avatar_small: string | null
+    is_followed: boolean
+    user: UserType
+}

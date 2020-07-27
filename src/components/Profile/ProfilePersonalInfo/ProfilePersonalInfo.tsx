@@ -1,10 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import s from './ProfilePersonalInfo.module.scss'
 import Prelode from "../../common/Prelode/Prelode";
-import {compose} from "redux";
 import {connect} from "react-redux";
-import {changeAvatar, editProfile, getUser, setEditingSuccess} from "../../../redux/reducers/profile-reducer";
-import {withRouter, RouteComponentProps} from "react-router-dom";
+import {actions, changeAvatar, editProfile, getUser} from "../../../redux/reducers/profile-reducer";
+import {RouteComponentProps, withRouter} from "react-router-dom";
 import ProfileAvatar from "./ProfileAvatar/ProfileAvatar";
 import Toolbar from "@material-ui/core/Toolbar";
 import AppBar from "@material-ui/core/AppBar";
@@ -91,7 +90,7 @@ const ProfilePersonalInfo : React.FC<MapStateProps & MapDispatchProps & RouteCom
         return <div>Something wrong :(</div>
     return (
         <div>
-            <AppBar position="static">
+            <AppBar position="static" color={'secondary'}>
                 <Toolbar>
                     <Typography variant="h6">
                         Profile
@@ -107,7 +106,7 @@ const ProfilePersonalInfo : React.FC<MapStateProps & MapDispatchProps & RouteCom
                                 className={s.realUserName}> {profile.user.first_name + " " + profile.user.last_name}
                             </Typography>
                         </Grid>
-                        <Grid item><Button color="primary" onClick={handleClick}>Edit</Button></Grid>
+                        { isOwner && <Grid item><Button color="primary" onClick={handleClick}>Edit</Button></Grid>}
                     </Grid>
 
                     {editMode ? <ProfileInfoForm initialValues={profile} onSubmit={handleSubmit}/> :
@@ -135,4 +134,4 @@ export default withRouter(connect
                 MapDispatchProps,
                 {},
                 RootState>
-            (mapStateToProps, {getUser, changeAvatar, setEditingSuccess, editProfile})(ProfilePersonalInfo))
+            (mapStateToProps, {getUser, changeAvatar, setEditingSuccess : actions.setEditingSuccess, editProfile})(ProfilePersonalInfo))

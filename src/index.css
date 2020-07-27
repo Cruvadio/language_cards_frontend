@@ -49,10 +49,10 @@ body.no-scroll {
   transition: background-color 0.2s linear;
 }
 .header.authorized {
-  position: static;
   padding: 0.66rem 2.66rem;
-  background-color: #fc5c7d;
-  box-shadow: 0 0 20px black;
+  background-color: #6a82fb;
+  box-shadow: 0 0 10px black;
+  position: static;
 }
 .header.authorized .nav-toggle {
   top: 10px;

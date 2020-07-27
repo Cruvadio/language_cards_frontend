@@ -1,7 +1,8 @@
-import {userAPI} from '../../api/api'
 import {stopSubmit} from "redux-form";
 import {ThunkAction} from "redux-thunk";
 import {ActionType, RootState} from "../store";
+import {tokenAPI} from "../../api/token_api";
+import {authAPI} from "../../api/auth_api";
 
 const SET_USER_DATA = 'auth_reducers/SET_USER_DATA';
 const SET_AUTHENTICATE = 'auth_reducers/SET_AUTHENTICATE';
@@ -66,18 +67,16 @@ export const actions = {
 
 
 
-type ThunkActionType = ThunkAction<Promise<void>, RootState, any, Actions>
+type ThunkActionType = ThunkAction<Promise<any>, RootState, any, Actions>
 
 
 export const loginUser = (username : string, password : string) : ThunkActionType => {
     return (dispatch : Function) => {
 
-        return userAPI.loginUser({username, password})
+        return tokenAPI.login(username, password)
             .then(
                 response => {
                     console.log(response);
-                    localStorage.setItem("refresh", response.refresh);
-                    localStorage.setItem("access", response.access);
                     dispatch(isLogged());
                 }
             )
@@ -97,7 +96,7 @@ export const createUser = (username: string,
                            password : string) : ThunkActionType => async (dispatch ) => {
 
     try{
-        let response = await userAPI.createNewUser(username, email, last_name, first_name, password)
+        let response = await authAPI.createNewUser(username, email, last_name, first_name, password)
         await dispatch(loginUser(username, password));
         dispatch(actions.setIsNewUser(true));
     } catch (e) {
@@ -107,10 +106,12 @@ export const createUser = (username: string,
     }
 }
 
-export const isLogged = () : ThunkActionType => async (dispatch) => {
-    if (!localStorage.access) return Promise.resolve();
+export const isLogged = () : ThunkActionType => async (dispatch, getState) => {
+    if (!tokenAPI.isLoggedIn()) {
+        return null
+    }
     try {
-        let response = await userAPI.isLoggedIn()
+        let response = await authAPI.isLoggedIn()
         console.log(response);
         dispatch(actions.setUserData({
             userID: response.id,
@@ -120,40 +121,14 @@ export const isLogged = () : ThunkActionType => async (dispatch) => {
         dispatch(actions.setAuthenticate(true));
 
     } catch (error) {
-
         dispatch(actions.setAuthenticate(false));
-        if (error.response.status === 401) {
-            dispatch(refreshToken())
-        } else {
-            console.log(error.response);
-            localStorage.removeItem("refresh");
-            localStorage.removeItem("access");
-
-        }
-    }
-}
-
-export const refreshToken = () : ThunkActionType => async (dispatch : Function) => {
-    try {
-        let data = await userAPI.refreshToken()
-        console.log(data);
-        localStorage.setItem("access", data.access);
-        localStorage.setItem("refresh", data.refresh);
-        dispatch(isLogged());
-    } catch (error) {
         console.log(error.response);
-        localStorage.removeItem("refresh");
-        localStorage.removeItem("access");
     }
 }
 
 export const userLogOut = () : ThunkActionType => async (dispatch : Function) => {
-    if (!localStorage.refresh) return;
     try {
-        await userAPI.blacklistToken()
-
-        localStorage.removeItem("access");
-        localStorage.removeItem("refresh");
+        await tokenAPI.logout()
         dispatch(actions.logOut());
     } catch (error) {
         console.log(error.response);

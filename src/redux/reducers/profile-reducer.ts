@@ -1,9 +1,9 @@
-import {userAPI} from "../../api/api";
 import {stopSubmit} from "redux-form";
 import {PhotosType, ProfileType} from "../../types/global";
 import {ThunkAction} from "redux-thunk";
 import {ActionType, RootState} from "../store";
 import {AnyAction} from "redux";
+import {profileAPI} from "../../api/profile_api";
 
 const TOGGLE_FETCHING = "profile_reducer/TOGGLE_FETCHING";
 const SET_PROFILE = "profile_reducer/SET_PROFILE";
@@ -62,18 +62,8 @@ type Actions = ActionType<typeof actions>
 
 export const actions = {
     toggleFetching: (isFetching: boolean) => ({type: TOGGLE_FETCHING, isFetching}as const),
-
-
-
     setProfile: (profile: ProfileType) => ({type: SET_PROFILE, profile}as const),
-
-
-
-
     avatarChangeSuccess: (photos : PhotosType) => ({type: AVATAR_CHANGE_SUCCESS, photos}as const),
-
-
-
     setEditingSuccess: (isEditingSuccess : boolean) => ({type: SET_EDITING, isEditingSuccess}as const),
 
 }
@@ -86,7 +76,7 @@ export const getUser = (userID : number) : ThunkActionType =>
     async (dispatch ) => {
         dispatch(actions.toggleFetching(true));
         try {
-            let data = await userAPI.getProfile(userID)
+            let data = await profileAPI.getProfile(userID)
             dispatch(actions.setProfile(data));
             dispatch(actions.toggleFetching(false));
 
@@ -97,7 +87,7 @@ export const getUser = (userID : number) : ThunkActionType =>
 export const changeAvatar = (image : File) : ThunkActionType=>
     async (dispatch) => {
     try {
-        let data = await userAPI.changeAvatar(image);
+        let data = await profileAPI.changeAvatar(image);
         console.log(data);
         dispatch(actions.avatarChangeSuccess(data));
     } catch (e) {
@@ -129,7 +119,7 @@ export const editProfile = ({
     try {
         const userID = getState().auth.currentUser.userID;
         if (!userID) throw Error("something is wrong");
-        let data = await userAPI.editProfile(userID, languages_know, languages_learn, birth_date, hobbies, about_me as string);
+        let data = await profileAPI.editProfile(userID, languages_know, languages_learn, birth_date, hobbies, about_me as string);
         console.log(data);
         const profile = {
             ...getState().profile.profile,

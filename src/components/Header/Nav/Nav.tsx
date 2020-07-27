@@ -27,6 +27,9 @@ const Nav : React.FC<PropsType> = ({isAuthenticate, navData, userLogOut}) => {
     if (isAuthenticate)
         return (
             <nav className={s.nav}>
+                <NavItem link="/users/"
+                         content={"Users"}
+                />
                 <NavItem link="#"
                          onClick={(e: React.MouseEvent<HTMLAnchorElement>) => {
                              e.preventDefault();

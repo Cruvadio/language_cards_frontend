@@ -1,0 +1,24 @@
+@import "../../variables";
+
+.bg {
+  min-height: 100vh;
+  background: linear-gradient(45deg, $color_primary, $color_secondary);
+}
+
+.container{
+  min-height: 100vh;
+  background-color: white;
+}
+
+.inner{
+  padding-top: 2rem;
+}
+
+.button {
+  width: 105px
+}
+
+.avatar {
+  width: 300px
+}
+

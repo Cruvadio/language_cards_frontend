@@ -7,11 +7,11 @@ import FormControl from "@material-ui/core/FormControl"
 import Input from "@material-ui/core/Input"
 import {WrappedFieldProps} from "redux-form"
 import DateFnsUtils from '@date-io/date-fns';
-import { KeyboardDatePicker, MuiPickersUtilsProvider } from "@material-ui/pickers";
+import {KeyboardDatePicker, MuiPickersUtilsProvider} from "@material-ui/pickers";
 import {MaterialUiPickersDate} from "@material-ui/pickers/typings/date";
 
 
-const AddError = (Element: React.FC<any>) : React.FC<WrappedFieldProps> => ({input, meta, ...props}) => {
+const AddError = (Element: React.FC<any>): React.FC<WrappedFieldProps> => ({input, meta, ...props}) => {
     const hasError = meta.touched && meta.error;
     return (hasError ? <Element error helperText={hasError}{...input} {...props}/> :
             <Element {...input}{...props} />
@@ -24,11 +24,11 @@ type PropsType = {
     labelID: string
 }
 
-export const SelectInput : React.FC<WrappedFieldProps & PropsType> = ({
-                                input: {
-                                    value, onChange
-                                }, meta: {touched, error}, objects, labelID, ...props
-                            }) => {
+export const SelectInput: React.FC<WrappedFieldProps & PropsType> = ({
+                                                                         input: {
+                                                                             value, onChange
+                                                                         }, meta: {touched, error}, objects, labelID, ...props
+                                                                     }) => {
     const hasError = touched && error;
     return (
         <FormControl error={hasError}>
@@ -39,10 +39,13 @@ export const SelectInput : React.FC<WrappedFieldProps & PropsType> = ({
                 onChange={onChange}
                 value={value}
                 input={<Input/>}
-                renderValue={( (selected : any) => (
+                renderValue={((selected: any) => (
                     <div>
-                        {selected.map((value : string) => (
-                            <Chip key={value} label={value}/>
+                        {selected.map((v: string) => (
+                            <Chip key={v} label={v} onDelete={() => {
+                                onChange(value.filter((i: string) => i !== v))
+                            }
+                            }/>
                         ))}
                     </div>
                 ))}
@@ -61,16 +64,18 @@ export const SelectInput : React.FC<WrappedFieldProps & PropsType> = ({
 }
 
 
-export const DateField : React.FC<WrappedFieldProps> = ({
-                             input:{onChange, ...input} , meta: {touched, error}, ...props
-                          }) => {
+export const DateField: React.FC<WrappedFieldProps> = ({
+                                                           input: {onChange, ...input}, meta: {touched, error}, ...props
+                                                       }) => {
 
     return (
         <MuiPickersUtilsProvider utils={DateFnsUtils}>
             <KeyboardDatePicker
                 variant={"inline"}
                 format="dd/MM/yyyy"
-                onChange={(date: MaterialUiPickersDate, value?: string | null | undefined) => { return (date && onChange(date.toJSON().split("T")[0]))}}
+                onChange={(date: MaterialUiPickersDate, value?: string | null | undefined) => {
+                    return (date && onChange(date.toJSON().split("T")[0]))
+                }}
                 {...input}
                 {...props}
             />

@@ -35,7 +35,7 @@ let ProfileCards: React.FC<PropsType> = ({cardsets, isFetching, onMoreClick, nex
     };
 
     return (
-        <AppBar position="static">
+        <AppBar position="static" color={'secondary'}>
             <Toolbar>
                 <Grid container justify="space-between" alignItems="center">
                     <Grid item><Typography variant="h6" color="inherit">My Cards</Typography></Grid>

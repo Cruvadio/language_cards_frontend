@@ -8,7 +8,6 @@ import Profile from "./components/Profile/Profile";
 import {Redirect, Route, Switch,} from "react-router-dom"
 import {connect} from "react-redux";
 import Login from "./components/Login/Login";
-import {setAuthenticate} from "./redux/reducers/auth_reducer";
 import {initialize} from "./redux/reducers/app_reducer";
 import PrivateRoute from "./components/Routers/PrivateRouter";
 import ProfileRoute from "./components/Routers/ProfileRouter";
@@ -18,8 +17,8 @@ import Registration from "./components/Registration/Registration";
 import ProfileEdit from "./components/ProfileEdit/ProfileEdit";
 import {createMuiTheme} from "@material-ui/core";
 import {ThemeProvider} from "@material-ui/styles";
-import {compose} from "redux";
 import {RootState} from "./redux/store";
+import Users from './components/Users/Users';
 
 const theme = createMuiTheme({
     palette: {
@@ -98,6 +97,10 @@ const App : React.FC<MapStatePropsType & MapDispatchProps> =
                     <ProfileRoute path='/sign_up'>
                         <Registration/>
                     </ProfileRoute>
+
+                    <PrivateRoute path='/users/'>
+                        <Users/>
+                    </PrivateRoute>
                 </Switch>
                 {/*<Intro buttonName={props.buttonName} introTitle={props.introTitle}/>*/}
             </div>

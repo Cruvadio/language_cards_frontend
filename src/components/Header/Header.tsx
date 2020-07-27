@@ -12,10 +12,7 @@ import {compose} from 'redux';
 type MapStatePropsType = {
     isAuthenticate: boolean
 }
-type MapDispatchPropsType = {}
-
-type OwnPropsType = {}
-type PropsType = MapStatePropsType & MapDispatchPropsType & OwnPropsType;
+type PropsType = MapStatePropsType;
 
 const Header: React.FC<PropsType> = ({isAuthenticate}) => {
 
@@ -23,13 +20,15 @@ const Header: React.FC<PropsType> = ({isAuthenticate}) => {
     if (isAuthenticate) classes = addClassName(classes, s.authorized)
 
     return (
-        <header className={classes} id="header">
-            <div className={s.inner}>
-                <HeaderTitle content="Language Cards"/>
-                <Nav/>
-                <Toggle/>
-            </div>
-        </header>
+        <div className={classes}>
+            <header id="header">
+                <div className={s.inner}>
+                    <HeaderTitle content="Language Cards"/>
+                    <Nav/>
+                    <Toggle/>
+                </div>
+            </header>
+        </div>
     )
 }
 
@@ -39,7 +38,7 @@ let mapStateToProps = (state: RootState) => ({
 
 export default compose(
     connect<MapStatePropsType,
-        MapDispatchPropsType,
-        OwnPropsType,
+        {},
+        {},
         RootState>(mapStateToProps, {}))
 (Header);

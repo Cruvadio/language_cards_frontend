@@ -14,11 +14,10 @@
   transition: background-color 0.2s linear;
 
   &.authorized {
-    position: static;
     padding: 0.66rem 2.66rem;
-    background-color: opacify($color_primary, 1);
-    box-shadow: 0 0 20px black;
-
+    background-color: opacify($color_secondary, 1);
+    box-shadow: 0 0 10px black;
+    position: static;
     & .nav-toggle {
       top: 10px
     }

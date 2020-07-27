@@ -1,7 +1,7 @@
-import {cardsAPI} from "../../api/api";
 import {CardsetType} from "../../types/global";
 import {ThunkAction} from "redux-thunk";
 import {ActionType, RootState} from "../store";
+import {cardsAPI} from "../../api/cards_api";
 
 const SET_CARDSETS = "cards_reducer/SET-CARDSETS";
 const ADD_CARDSET = "cards_reducer/ADD-CARDSET"
