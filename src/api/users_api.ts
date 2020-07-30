@@ -1,7 +1,7 @@
 import axios from "axios";
 import {API_URL, APIList} from "./api";
 import {tokenAPI} from "./token_api";
-import {UserListType} from "../types/global";
+import {FilterUsers, UserListType} from '../types/global'
 
 export const usersAPI = {
 
@@ -26,8 +26,8 @@ export const usersAPI = {
         })
     },
 
-    async getUsers(page: number, pageSize: number) {
-        return axios.get<APIList<UserListType>>(API_URL + `profiles/?page=${page}&page_size=${pageSize}`,
+    async getUsers(page: number, pageSize: number, query: string) {
+        return axios.get<APIList<UserListType>>(API_URL + `profiles/?page=${page}&page_size=${pageSize}&` + query,
             {
                 headers: await tokenAPI.makeAuthorizationToken()
             }).then(response => response.data)

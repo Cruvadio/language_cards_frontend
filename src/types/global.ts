@@ -24,6 +24,8 @@ export type UserType = {
 }
 
 export type ProfileType = {
+    status?: string | null
+
     avatar?: string
     avatar_small?: string
     avatar_big?: string
@@ -65,5 +67,21 @@ export type PhotosType = {
 export type UserListType = {
     avatar_small: string | null
     is_followed: boolean
+    status: string | null
     user: UserType
+}
+
+export type FilterUsers = {
+    username?: string
+    friends?: "true" | "false"
+    max_age?: number
+    min_age?: number
+}
+export type MessageType = {
+    id: number
+    sender: string
+    receiver: string
+    text: string
+    is_new: boolean
+    date: string
 }

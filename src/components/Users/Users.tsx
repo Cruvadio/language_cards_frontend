@@ -11,6 +11,7 @@ import {Grid, List} from "@material-ui/core";
 import {User} from "./User";
 import {UserListType} from "../../types/global";
 import {UserSkeleton} from "./UserSkeleton";
+import UsersSearch from './UsersSearch'
 
 type MapStateProps = {
     users: Array<UserListType>
@@ -24,7 +25,7 @@ type MapStateProps = {
 }
 
 type MapDispatchProps = {
-    getUsers: (page: number) => void
+    getUsers: (page: number, query: string) => void
     follow: (userID: number) => void
     unfollow: (userID: number) => void
 }
@@ -46,11 +47,6 @@ const Users: React.FC<MapStateProps & MapDispatchProps> = React.memo(
      }) => {
 
         const [page, setPage] = useState(1);
-
-
-        useEffect(() => {
-            getUsers(page)
-        }, [getUsers, page])
 
 
         const countUsersOnPage = () => {
@@ -77,7 +73,9 @@ const Users: React.FC<MapStateProps & MapDispatchProps> = React.memo(
         return (
             <Box className={s.bg}>
                 <Container maxWidth="lg" className={s.container}>
+
                     <Grid container justify={"center"} alignContent={"center"} className={s.inner}>
+                        <Grid  xs={12}><UsersSearch getUsers={getUsers} page={page}/></Grid>
                         <Grid item><Pagination count={pagesCount} page={page} onChange={handleChange}
                                                disabled={isFetching}/></Grid>
 

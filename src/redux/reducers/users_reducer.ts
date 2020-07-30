@@ -1,4 +1,4 @@
-import {UserListType} from "../../types/global";
+import {FilterUsers, UserListType} from '../../types/global'
 import {ActionType, RootState} from "../store";
 import {ThunkAction} from "redux-thunk";
 import {AnyAction} from "redux";
@@ -76,10 +76,10 @@ export const actions = {
 
 type ThunkActionType = ThunkAction<Promise<void>, RootState, void, AnyAction>
 
-export const getUsers = (page: number): ThunkActionType =>
+export const getUsers = (page: number, query: string): ThunkActionType =>
     async (dispatch, getState) => {
         dispatch(actions.toggleFetching(true));
-        let data = await usersAPI.getUsers(page, getState().users.pageSize)
+        let data = await usersAPI.getUsers(page, getState().users.pageSize, query)
         dispatch(actions.toggleFetching(false));
         dispatch(actions.setUsers(data.results, data.count, data.next))
 

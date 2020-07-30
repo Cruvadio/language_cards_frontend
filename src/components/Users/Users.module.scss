@@ -4,7 +4,6 @@
   min-height: 100vh;
   background: linear-gradient(45deg, $color_primary, $color_secondary);
 }
-
 .container{
   min-height: 100vh;
   background-color: white;
@@ -22,3 +21,57 @@
   width: 300px
 }
 
+.search{
+  background-color: $color_secondary;
+  padding: 1px 4px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin: 0 auto;
+
+  .icon{
+    margin:0 10px;
+    color: $color_primary;
+  }
+
+  .input{
+    flex-grow: 8;
+    margin-left: 10px;
+  }
+  margin-bottom: 10px;
+}
+
+
+.popup{
+  position: relative;
+}
+.filter{
+  padding: 10px;
+  min-width: 200px;
+  &.visible{
+    display: block;
+  }
+}
+
+.parameters{
+  display: flex;
+  flex: 1 1 0;
+  flex-direction: column;
+
+
+  .text{
+    margin-top: 1rem;
+  }
+
+  .age{
+
+    & .text{
+      font-size: 2rem;
+    }
+
+    display: flex;
+    flex: 1 1 0;
+    justify-content: space-around;
+    align-items: center;
+  }
+}

@@ -6,6 +6,8 @@ import NavItem from "./NavItem/NavItem";
 import {userLogOut} from "../../../redux/reducers/auth_reducer";
 import {RootState} from "../../../redux/store";
 import {NavDataType} from "../../../types/global";
+import GroupIcon from '@material-ui/icons/Group';
+import MessageIcon from '@material-ui/icons/Message';
 
 type MapStatePropsType = {
     isAuthenticate: boolean,
@@ -28,7 +30,10 @@ const Nav : React.FC<PropsType> = ({isAuthenticate, navData, userLogOut}) => {
         return (
             <nav className={s.nav}>
                 <NavItem link="/users/"
-                         content={"Users"}
+                         content={<GroupIcon/>}
+                />
+                <NavItem link="/messages/"
+                         content={<MessageIcon/>}
                 />
                 <NavItem link="#"
                          onClick={(e: React.MouseEvent<HTMLAnchorElement>) => {

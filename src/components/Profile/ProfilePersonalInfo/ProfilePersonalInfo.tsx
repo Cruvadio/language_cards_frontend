@@ -105,6 +105,11 @@ const ProfilePersonalInfo : React.FC<MapStateProps & MapDispatchProps & RouteCom
                             <Typography
                                 className={s.realUserName}> {profile.user.first_name + " " + profile.user.last_name}
                             </Typography>
+                            {profile.status &&
+                                <Typography
+                                    className={s.realUserName}> {profile.status}
+                                </Typography>
+                            }
                         </Grid>
                         { isOwner && <Grid item><Button color="primary" onClick={handleClick}>Edit</Button></Grid>}
                     </Grid>

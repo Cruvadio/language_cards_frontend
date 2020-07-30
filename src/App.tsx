@@ -19,6 +19,7 @@ import {createMuiTheme} from "@material-ui/core";
 import {ThemeProvider} from "@material-ui/styles";
 import {RootState} from "./redux/store";
 import Users from './components/Users/Users';
+import Dialogs from './components/Dialogs/Dialogs'
 
 const theme = createMuiTheme({
     palette: {
@@ -100,6 +101,10 @@ const App : React.FC<MapStatePropsType & MapDispatchProps> =
 
                     <PrivateRoute path='/users/'>
                         <Users/>
+                    </PrivateRoute>
+
+                    <PrivateRoute path='/messages/'>
+                        <Dialogs/>
                     </PrivateRoute>
                 </Switch>
                 {/*<Intro buttonName={props.buttonName} introTitle={props.introTitle}/>*/}

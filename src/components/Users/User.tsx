@@ -28,7 +28,7 @@ export function User(props: { u: UserListType, userID: any, disabled: boolean, o
             </ListItemAvatar>
             <ListItemText
                 primary={props.u.user.username}
-                secondary={props.u.user.first_name + " " + props.u.user.last_name}/>
+                secondary={props.u.user.first_name + " " + props.u.user.last_name + '\n' + props.u.status}/>
 
             {
                 props.u.user.id !== props.userID && (

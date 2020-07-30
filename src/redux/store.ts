@@ -10,6 +10,7 @@ import {reducer as formReducer} from "redux-form";
 import appReducer from "./reducers/app_reducer";
 import {commonReducer} from "./reducers/common_reducer";
 import usersReducer from "./reducers/users_reducer";
+import dialogsReducer from './reducers/dialogs_reducer'
 
 
 let reducersBatch = combineReducers({
@@ -23,6 +24,7 @@ let reducersBatch = combineReducers({
     form: formReducer,
     common: commonReducer,
     users: usersReducer,
+    dialogs: dialogsReducer
 });
 
 export type RootState = ReturnType<typeof reducersBatch>

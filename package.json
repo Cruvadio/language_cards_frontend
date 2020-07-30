@@ -20,6 +20,9 @@
     "@types/redux-form": "^8.2.7",
     "axios": "^0.19.2",
     "date-fns": "^2.15.0",
+    "formik": "^2.1.5",
+    "formik-material-ui": "^3.0.0-alpha.0",
+    "lodash": "^4.17.19",
     "react": "^16.13.1",
     "react-cookie": "^4.0.3",
     "react-dom": "^16.13.1",
@@ -54,6 +57,7 @@
     ]
   },
   "devDependencies": {
+    "@types/lodash": "^4.14.158",
     "next-sass": "^1.0.3",
     "node-sass": "^4.14.1"
   }
