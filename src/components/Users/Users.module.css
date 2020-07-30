@@ -1,0 +1,71 @@
+.bg {
+  min-height: 100vh;
+  background: linear-gradient(45deg, #FC5C7D, #6a82fb);
+}
+
+.container {
+  min-height: 100vh;
+  background-color: white;
+}
+
+.inner {
+  padding-top: 2rem;
+}
+
+.button {
+  width: 105px;
+}
+
+.avatar {
+  width: 300px;
+}
+
+.search {
+  background-color: #6a82fb;
+  padding: 1px 4px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin: 0 auto;
+  margin-bottom: 10px;
+}
+.search .icon {
+  margin: 0 10px;
+  color: #FC5C7D;
+}
+.search .input {
+  flex-grow: 8;
+  margin-left: 10px;
+}
+
+.popup {
+  position: relative;
+}
+
+.filter {
+  padding: 10px;
+  min-width: 200px;
+}
+.filter.visible {
+  display: block;
+}
+
+.parameters {
+  display: flex;
+  flex: 1 1 0;
+  flex-direction: column;
+}
+.parameters .text {
+  margin-top: 1rem;
+}
+.parameters .age {
+  display: flex;
+  flex: 1 1 0;
+  justify-content: space-around;
+  align-items: center;
+}
+.parameters .age .text {
+  font-size: 2rem;
+}
+
+/*# sourceMappingURL=Users.module.css.map */

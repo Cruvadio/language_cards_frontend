@@ -1,0 +1,47 @@
+.section::after {
+  display: block;
+  content: "";
+  margin: 5.33rem auto;
+  width: 80%;
+  height: 0.2rem;
+  background-color: #6a82fb;
+}
+.section:first-of-type {
+  padding-top: 6rem;
+}
+.section:last-of-type {
+  padding-bottom: 6rem;
+}
+.section:last-of-type::after {
+  display: none;
+}
+
+.title {
+  font-size: 2.66rem;
+  text-align: center;
+  text-transform: uppercase;
+  margin-bottom: 4.66rem;
+}
+.title--features {
+  color: white;
+}
+
+.name {
+  font-family: "Lobster", cursive;
+  letter-spacing: 0.33rem;
+  color: #FC5C7D;
+}
+
+.text {
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  opacity: 0.8;
+  padding: 0 4rem;
+  font-size: 1.66rem;
+  font-weight: 400;
+  text-indent: 2.66rem;
+  line-height: 1.8;
+  position: relative;
+}
+
+/*# sourceMappingURL=LandingSection.module.css.map */

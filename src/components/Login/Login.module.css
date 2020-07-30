@@ -1,0 +1,95 @@
+.login {
+  display: flex;
+  background: linear-gradient(45deg, #FC5C7D, #6A82FB);
+  height: 100vh;
+}
+
+.inner {
+  background-color: white;
+  display: grid;
+  width: 800px;
+  height: 600px;
+  margin: auto;
+  padding: 2rem;
+  grid-template-rows: auto;
+  align-content: center;
+  justify-content: center;
+  grid-row-gap: 1.8rem;
+  position: relative;
+}
+
+.login h1 {
+  text-transform: uppercase;
+  color: #6A82FB;
+  text-align: center;
+  padding-bottom: 2rem;
+}
+
+.header {
+  position: relative;
+}
+
+.forgot {
+  text-align: center;
+  font-size: 0.8rem;
+  text-decoration: none;
+  color: black;
+  font-weight: 300;
+}
+.forgot span {
+  transition: color 0.2s ease-in;
+}
+.forgot span:hover {
+  color: #6A82FB;
+}
+
+.account {
+  grid-template-rows: auto auto auto;
+  grid-template-columns: auto;
+  position: absolute;
+  top: 90%;
+  right: 50%;
+  transform: translate(50%);
+  text-align: center;
+  text-decoration: none;
+  color: black;
+  font-weight: 300;
+  transition: color 0.2s ease-in;
+}
+.account i {
+  margin-left: 0.3rem;
+  transition: transform 0.2s ease;
+}
+.account:hover {
+  color: #6A82FB;
+}
+.account:hover i {
+  transform: translate(0.8rem);
+}
+
+.error {
+  width: 100%;
+  right: 50%;
+  transform: translate(50%, -25px);
+  position: absolute;
+  margin-top: 0.66rem;
+  text-align: center;
+  font-size: 0.8rem;
+  text-decoration: none;
+  color: red;
+  font-weight: 300;
+}
+
+@keyframes shadow {
+  0% {
+    box-shadow: 0 0 0 #6A82FB;
+  }
+  50% {
+    box-shadow: 0 0 30px #6A82FB;
+  }
+  0% {
+    box-shadow: 0 0 0px #6A82FB;
+  }
+}
+
+/*# sourceMappingURL=Login.module.css.map */

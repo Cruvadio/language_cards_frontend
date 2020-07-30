@@ -1,0 +1,71 @@
+.profile {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
+  text-align: center;
+}
+
+.inner {
+  background-color: white;
+  color: black;
+  padding: 0 1.5rem;
+}
+
+.userName {
+  font-size: 1.5rem;
+  color: #FC5C7D;
+  padding-bottom: 1rem;
+}
+
+.realUserName {
+  padding-bottom: 1rem;
+  font-family: "Poiret One", cursive;
+  font-size: 1.2rem;
+}
+
+.personalInfo {
+  padding-bottom: 1.3rem;
+  color: #FC5C7D;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+}
+
+.personalInfo_element {
+  text-align: left;
+  margin-bottom: 0.8rem;
+  display: grid;
+  grid-template-columns: 3fr 4fr;
+  list-style: none;
+  font-family: "Poiret One", cursive;
+}
+.personalInfo_element.about {
+  text-align: left;
+  display: grid;
+  grid-template-rows: 1fr 5fr;
+  grid-template-columns: 1fr;
+}
+
+.elementCategory {
+  color: #FC5C7D;
+  font-family: "Montserrat", sans-serif;
+}
+
+.form {
+  margin-top: 1rem;
+  display: grid;
+  grid-template-rows: 5fr 1fr;
+}
+
+.prelode {
+  margin: auto auto;
+}
+
+.input {
+  display: none;
+}
+
+/*# sourceMappingURL=ProfilePersonalInfo.module.css.map */

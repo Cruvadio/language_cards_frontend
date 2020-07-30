@@ -1,0 +1,32 @@
+.button {
+  cursor: pointer;
+  font: inherit;
+  display: inline-block;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 0.5em 2em;
+  outline: none;
+  background-color: #FC5C7D;
+  border-radius: 2rem;
+  color: white;
+  transition: box-shadow 0.2s linear, border 0.2s linear, background 0.2s ease;
+  margin: 0 auto;
+  border: none;
+}
+.button:hover {
+  background-color: #9cacfc;
+}
+.button .intro {
+  font-size: 1.5rem;
+}
+@media (max-width: 560px) {
+  .button {
+    text-align: center;
+    display: block;
+    margin: 0 auto;
+    font-size: 1.2rem;
+  }
+}
+
+/*# sourceMappingURL=Button.module.css.map */

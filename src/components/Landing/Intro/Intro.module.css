@@ -1,0 +1,45 @@
+.content {
+  overflow: hidden;
+}
+
+.intro {
+  flex-direction: column;
+  justify-content: center;
+  position: absolute;
+  margin: 0 auto;
+  width: 100%;
+  height: 100vh;
+  background-image: linear-gradient(45deg, #FC5C7D, #6a82fb);
+  background-repeat: no-repeat;
+  background-size: cover;
+  -webkit-background-size: cover;
+  background-attachment: fixed;
+}
+@media (max-width: 778px) {
+  .intro {
+    min-height: 420px;
+  }
+}
+
+.inner {
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 3;
+  margin: 0 auto;
+  width: 100%;
+  height: 100vh;
+  text-align: center;
+}
+
+.button {
+  font-size: 1.5rem;
+  z-index: 2;
+  transition: 1s;
+}
+.button:hover {
+  transform: scale(1.2);
+}
+
+/*# sourceMappingURL=Intro.module.css.map */

@@ -1,0 +1,36 @@
+.registration {
+  display: flex;
+  background: linear-gradient(45deg, #FC5C7D, #6A82FB);
+  height: 100vh;
+}
+
+.registration h1 {
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.inner {
+  background-color: white;
+  display: grid;
+  width: 800px;
+  height: 600px;
+  margin: auto;
+  padding: 2rem;
+  grid-template-rows: auto;
+  align-content: center;
+  justify-content: center;
+  grid-row-gap: 1.8rem;
+  position: relative;
+}
+
+.block {
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+  align-items: center;
+}
+
+.button {
+  width: 600px;
+}
+
+/*# sourceMappingURL=ProfileEdit.module.css.map */

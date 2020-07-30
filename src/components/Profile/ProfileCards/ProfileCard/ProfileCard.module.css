@@ -1,0 +1,32 @@
+.element {
+  width: 150px;
+}
+
+.name {
+  padding-top: 0.5rem;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #FC5C7D;
+}
+
+.language {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 300;
+  text-align: right;
+  padding: 1rem 0;
+}
+
+.last {
+  font-size: 0.86rem;
+  color: #072ff8;
+}
+
+.date {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 300;
+  color: black;
+  text-align: right;
+}
+
+/*# sourceMappingURL=ProfileCard.module.css.map */
