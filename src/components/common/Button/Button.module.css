@@ -7,7 +7,7 @@
   font-size: 1rem;
   padding: 0.5em 2em;
   outline: none;
-  background-color: #FC5C7D;
+  background-color: #1890ff;
   border-radius: 2rem;
   color: white;
   transition: box-shadow 0.2s linear, border 0.2s linear, background 0.2s ease;
@@ -15,7 +15,7 @@
   border: none;
 }
 .button:hover {
-  background-color: #9cacfc;
+  background-color: #ef5ead;
 }
 .button .intro {
   font-size: 1.5rem;

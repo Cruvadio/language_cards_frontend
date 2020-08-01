@@ -79,9 +79,25 @@ export type FilterUsers = {
 }
 export type MessageType = {
     id: number
-    sender: string
-    receiver: string
+    sender: UserMessageType
     text: string
     is_new: boolean
     date: string
+}
+
+export type UserMessageType = {
+    id: number
+    username: string
+}
+
+export type DialogType = {
+    id: number
+    participants: Array<UserMessageType>
+    last_message: MessageType
+}
+
+export type CurrentDialogType = {
+    id: number
+    participants: Array<UserMessageType>
+    messages: Array<MessageType>
 }

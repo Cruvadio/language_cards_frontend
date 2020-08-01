@@ -6,21 +6,21 @@
   left: 0;
   right: 0;
   z-index: 1000;
-  background-color: rgba(106, 130, 251, 0);
+  background-color: rgba(235, 47, 150, 0);
   transition: background-color 0.2s linear;
 }
 .header.authorized {
-  padding: 0.66rem 2.66rem;
-  background-color: #6a82fb;
-  box-shadow: 0 0 10px black;
+  box-shadow: 0 0 10px #d9d9d9;
+  padding: 0;
+  background-color: white;
   position: static;
 }
 .header.authorized .nav-toggle {
   top: 10px;
 }
 @media (max-width: 778px) {
-  .header.active {
-    background-color: #6a82fb;
+  .header.authorized {
+    background-color: #eb2f96;
   }
 }
 
@@ -34,8 +34,12 @@
   text-decoration: none;
   color: white;
   font-size: 1.33rem;
-  font-weight: 900;
+  font-weight: 400;
   text-transform: uppercase;
+}
+.title.authorized {
+  color: #1890ff;
+  padding-left: 15px;
 }
 @media (max-width: 560px) {
   .title {
@@ -57,8 +61,13 @@
     background-color: #28D1E7;
   }
 }
-.nav .active {
+.nav .authorized {
   display: block;
+}
+
+.antNav {
+  display: flex;
+  justify-content: center;
 }
 
 .link {
@@ -90,23 +99,23 @@
     margin-top: 0;
   }
 }
-.link::after .active .link:hover {
-  color: #FC5C7D;
+.link::after .authorized .link:hover {
+  color: #1890ff;
 }
-.link::after .active .link:hover::after {
-  background-color: #FC5C7D;
+.link::after .authorized .link:hover::after {
+  background-color: #1890ff;
 }
 .link.fixed {
-  color: #FC5C7D;
+  color: #1890ff;
 }
 .link.fixed::after {
-  background-color: #FC5C7D;
+  background-color: #1890ff;
 }
 .link:hover {
-  color: #9cacfc;
+  color: #ef5ead;
 }
 .link:hover:after {
-  background-color: #9cacfc;
+  background-color: #ef5ead;
   opacity: 1;
 }
 @media (max-width: 778px) {
@@ -136,14 +145,14 @@
 .toggle:focus {
   border: none;
 }
-.toggle.active .nav-toggle__item {
+.toggle.authorized .nav-toggle__item {
   background: none;
 }
-.toggle.active .nav-toggle__item:before {
+.toggle.authorized .nav-toggle__item:before {
   transform-origin: left top;
   transform: rotate(45deg) translate3d(0px, -2px, 0);
 }
-.toggle.active .nav-toggle__item:after {
+.toggle.authorized .nav-toggle__item:after {
   transform-origin: left bottom;
   transform: rotate(-45deg) translate3d(0px, 3px, 0);
 }

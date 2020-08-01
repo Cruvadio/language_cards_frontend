@@ -15,10 +15,16 @@
 
   }
 
-  .active {
+  .authorized {
 
     display: block;
   }
+}
+
+
+.antNav{
+  display: flex;
+  justify-content: center;
 }
 
 

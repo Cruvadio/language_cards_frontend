@@ -21,16 +21,16 @@
     border: none;
   }
 
-  &.active .nav-toggle__item {
+  &.authorized .nav-toggle__item {
     background: none;
   }
 
-  &.active .nav-toggle__item:before {
+  &.authorized .nav-toggle__item:before {
     transform-origin: left top;
     transform: rotate(45deg) translate3d(0px, -2px, 0)
   }
 
-  &.active .nav-toggle__item:after {
+  &.authorized .nav-toggle__item:after {
     transform-origin: left bottom;
     transform: rotate(-45deg) translate3d(0px, 3px, 0);
   }

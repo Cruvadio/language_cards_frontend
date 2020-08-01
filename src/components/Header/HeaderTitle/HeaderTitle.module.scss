@@ -4,8 +4,13 @@
   text-decoration: none;
   color: white;
   font-size: 1.33rem;
-  font-weight: 900;
+  font-weight: 400;
   text-transform: uppercase;
+
+  &.authorized{
+    color: $color_primary;
+    padding-left: 15px;
+  }
 
   @media ($feature: $mobile) {
     font-size: 1rem;

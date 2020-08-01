@@ -5,8 +5,8 @@ import Header from "./components/Header/Header";
 import "./main.scss"
 import Profile from "./components/Profile/Profile";
 
-import {Redirect, Route, Switch,} from "react-router-dom"
-import {connect} from "react-redux";
+import {Redirect, Route, Switch,} from 'react-router'
+import {connect} from 'react-redux';
 import Login from "./components/Login/Login";
 import {initialize} from "./redux/reducers/app_reducer";
 import PrivateRoute from "./components/Routers/PrivateRouter";
@@ -15,24 +15,25 @@ import Landing from "./components/Landing/Landing";
 import Prelode from "./components/common/Prelode/Prelode";
 import Registration from "./components/Registration/Registration";
 import ProfileEdit from "./components/ProfileEdit/ProfileEdit";
-import {createMuiTheme} from "@material-ui/core";
-import {ThemeProvider} from "@material-ui/styles";
+import {createMuiTheme} from '@material-ui/core/styles';
+import {ThemeProvider} from '@material-ui/core/styles';
 import {RootState} from "./redux/store";
 import Users from './components/Users/Users';
 import Dialogs from './components/Dialogs/Dialogs'
+import {Layout} from 'antd'
 
 const theme = createMuiTheme({
     palette: {
         primary: {
-            light: '#fc7c97',
-            main: '#FC5C7D',
-            dark: '#b04057',
+            light: '#e6f7ff',
+            main: '#1890ff',
+            dark: '#096dd9',
             contrastText: '#fff',
         },
         secondary: {
-            light: '#879bfb',
-            main: '#6A82FB',
-            dark: '#4a5baf',
+            light: '#ffd6e7',
+            main: '#eb2f96',
+            dark: '#c41d7f',
             contrastText: '#fff',
         },
     },
@@ -77,10 +78,11 @@ const App : React.FC<MapStatePropsType & MapDispatchProps> =
         </div>*/
 
         <ThemeProvider theme={theme}>
-            <div>
+            <Layout className="layout">
                 <Header/>
                 {isNewUser && <Redirect to={"/edit/profile"}/>
                 }
+                <Layout.Content>
                 <Switch>
                     <ProfileRoute exact path='/'>
                         <Landing/>
@@ -108,7 +110,8 @@ const App : React.FC<MapStatePropsType & MapDispatchProps> =
                     </PrivateRoute>
                 </Switch>
                 {/*<Intro buttonName={props.buttonName} introTitle={props.introTitle}/>*/}
-            </div>
+                </Layout.Content>
+            </Layout>
         </ThemeProvider>
     );
 }

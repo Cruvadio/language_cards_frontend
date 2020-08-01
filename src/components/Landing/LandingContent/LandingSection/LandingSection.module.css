@@ -4,7 +4,7 @@
   margin: 5.33rem auto;
   width: 80%;
   height: 0.2rem;
-  background-color: #6a82fb;
+  background-color: #eb2f96;
 }
 .section:first-of-type {
   padding-top: 6rem;
@@ -29,7 +29,7 @@
 .name {
   font-family: "Lobster", cursive;
   letter-spacing: 0.33rem;
-  color: #FC5C7D;
+  color: #1890ff;
 }
 
 .text {

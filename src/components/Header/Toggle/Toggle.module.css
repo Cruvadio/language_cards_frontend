@@ -15,14 +15,14 @@
 .toggle:focus {
   border: none;
 }
-.toggle.active .nav-toggle__item {
+.toggle.authorized .nav-toggle__item {
   background: none;
 }
-.toggle.active .nav-toggle__item:before {
+.toggle.authorized .nav-toggle__item:before {
   transform-origin: left top;
   transform: rotate(45deg) translate3d(0px, -2px, 0);
 }
-.toggle.active .nav-toggle__item:after {
+.toggle.authorized .nav-toggle__item:after {
   transform-origin: left bottom;
   transform: rotate(-45deg) translate3d(0px, 3px, 0);
 }

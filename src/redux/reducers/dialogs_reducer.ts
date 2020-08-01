@@ -1,9 +1,10 @@
 import {ActionType} from '../store'
-import {MessageType} from '../../types/global'
+import {CurrentDialogType, DialogType, MessageType} from '../../types/global'
 
 
 let initialState = {
-    messages: [] as Array<MessageType>,
+    dialogs: [] as Array<DialogType>,
+    currentDialog: null as CurrentDialogType | null,
 
     isFetching: false
 }
@@ -12,36 +13,39 @@ export type InitialStateType = typeof initialState
 
 type Actions = ActionType<typeof actions>
 
-const dialogsReducer = (state = initialState, action : Actions) : InitialStateType => {
+const dialogsReducer = (state = initialState, action: Actions): InitialStateType => {
     switch (action.type) {
-        case 'lc/dialogs_reducer/SET_MESSAGES':
+        case 'lc/dialogs_reducer/CHANGE_DIALOG':
             return {
                 ...state,
-                messages: action.messages
+                currentDialog: action.dialog
             }
-        case 'lc/dialogs_reducer/ADD_MESSAGE': {
-
+        case 'lc/dialogs_reducer/ADD_MESSAGE':
+            if (!state.currentDialog)
+                return state
             return {
                 ...state,
-                messages: [...state.messages, action.message]
-            };
-        }
+                currentDialog: {
+                    ...state.currentDialog,
+                    messages: [...state.currentDialog.messages, action.message]
+                }
+            }
         case 'lc/dialogs_reducer/TOGGLE_FETCHING':
             return {
                 ...state,
                 isFetching: action.isFetching
             }
         default:
-            return state;
+            return state
 
     }
 }
 
 export const actions = {
+    changeDialog: (dialog: CurrentDialogType) => ({type: 'lc/dialogs_reducer/CHANGE_DIALOG', dialog} as const),
     addMessage: (message: MessageType) => ({type: 'lc/dialogs_reducer/ADD_MESSAGE', message} as const),
-    setMessages: (messages: Array<MessageType>) => ({type: 'lc/dialogs_reducer/SET_MESSAGES', messages} as const),
-    toggleFetching: (isFetching: boolean) => ({type: 'lc/dialogs_reducer/TOGGLE_FETCHING' , isFetching} as const)
+    toggleFetching: (isFetching: boolean) => ({type: 'lc/dialogs_reducer/TOGGLE_FETCHING', isFetching} as const)
 }
 
 
-export default dialogsReducer;
+export default dialogsReducer

@@ -1,13 +1,13 @@
-import React, {ChangeEvent} from "react";
-import {connect} from "react-redux";
-import s from './Nav.module.css'
-import FontAwesomeIcon from "../../common/FontAwesomeIcon";
-import NavItem from "./NavItem/NavItem";
-import {userLogOut} from "../../../redux/reducers/auth_reducer";
-import {RootState} from "../../../redux/store";
-import {NavDataType} from "../../../types/global";
-import GroupIcon from '@material-ui/icons/Group';
-import MessageIcon from '@material-ui/icons/Message';
+import React, {useState} from 'react'
+import {connect} from 'react-redux'
+import s from './Nav.module.scss'
+import NavItem from './NavItem/NavItem'
+import {userLogOut} from '../../../redux/reducers/auth_reducer'
+import {RootState} from '../../../redux/store'
+import {NavDataType} from '../../../types/global'
+import {Menu} from 'antd'
+import {NavLink} from 'react-router-dom'
+import {LoginOutlined, LogoutOutlined, MailOutlined, TeamOutlined, UserOutlined} from '@ant-design/icons'
 
 type MapStatePropsType = {
     isAuthenticate: boolean,
@@ -18,46 +18,47 @@ type MapDispatchPropsType = {
     userLogOut: () => void
 }
 
-type OwnPropsType = {
-
-}
+type OwnPropsType = {}
 
 type PropsType = MapStatePropsType & MapDispatchPropsType & OwnPropsType
 
-const Nav : React.FC<PropsType> = ({isAuthenticate, navData, userLogOut}) => {
+const Nav: React.FC<PropsType> = ({isAuthenticate, navData, userLogOut}) => {
+
+    const [current, setCurrent] = useState('profile')
+
+    const handleClick = (e: any) => {
+        console.log('click', e)
+        setCurrent(e.key)
+    }
 
     if (isAuthenticate)
         return (
-            <nav className={s.nav}>
-                <NavItem link="/users/"
-                         content={<GroupIcon/>}
-                />
-                <NavItem link="/messages/"
-                         content={<MessageIcon/>}
-                />
-                <NavItem link="#"
-                         onClick={(e: React.MouseEvent<HTMLAnchorElement>) => {
-                             e.preventDefault();
-                             userLogOut()
-                         }}
-                         content={<FontAwesomeIcon className="fas fa-sign-out-alt"/>}
-                />
-            </nav>
+            <Menu onClick={handleClick} selectedKeys={[current]} mode="horizontal">
+                <Menu.Item icon={<UserOutlined />} key='profile'><NavLink to={'/profile/'}>Profile</NavLink></Menu.Item>
+                <Menu.Item icon={<TeamOutlined />} key='users'> <NavLink to={'/users/'}>Users</NavLink></Menu.Item>
+                <Menu.Item icon={<MailOutlined />} key='messages'> <NavLink to={'/messages/'}>Messages</NavLink></Menu.Item>
+                <Menu.Item icon={<LogoutOutlined />} key='log_out'>
+                    <a
+                        onClick={(e: React.MouseEvent) => {
+                            e.preventDefault()
+                            userLogOut()
+                        }}
+                    ></a>
+                </Menu.Item>
+            </Menu>
         )
     return (
         <nav className={s.nav}>
-            {navData.map((e:NavDataType) => <NavItem link={e.link} key={e.id} content={e.content}/>)}
-            <NavItem link="/login/" content={<FontAwesomeIcon className="fas fa-sign-in-alt"/>}/>
+            {navData.map((e: NavDataType) => <NavItem link={e.link} key={e.id} content={e.content}/>)}
+            <NavItem link="/login/" content={<LoginOutlined />}/>
         </nav>)
 }
 
 
-let mapStateToProps = (state : RootState) => ({
+let mapStateToProps = (state: RootState) => ({
     navData: state.header.navData,
-    isAuthenticate: state.auth.isAuthenticate,
+    isAuthenticate: state.auth.isAuthenticate
 })
 
 
-
-
-export default connect<MapStatePropsType, MapDispatchPropsType, OwnPropsType, RootState>(mapStateToProps, {userLogOut})(Nav);
+export default connect<MapStatePropsType, MapDispatchPropsType, OwnPropsType, RootState>(mapStateToProps, {userLogOut})(Nav)

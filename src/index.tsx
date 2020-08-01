@@ -7,6 +7,7 @@ import {BrowserRouter} from "react-router-dom";
 import store from "./redux/store";
 import {Provider} from "react-redux";
 import {CookiesProvider} from "react-cookie";
+import 'antd/dist/antd.css'; // or 'antd/dist/antd.less'
 
 
 ReactDOM.render(

@@ -19,16 +19,16 @@
   top: 10px;
 }
 @media (max-width: 778px) {
-  .header.active {
+  .header.authorized {
     background-color: #28D1E7;
   }
-  .header.active .header__nav__link:hover {
+  .header.authorized .header__nav__link:hover {
     color: #f06659;
   }
-  .header.active .header__nav__link:hover::after {
+  .header.authorized .header__nav__link:hover::after {
     background-color: #f06659;
   }
-  .header.active .header__nav {
+  .header.authorized .header__nav {
     display: block;
   }
 }

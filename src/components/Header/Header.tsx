@@ -7,6 +7,9 @@ import {connect} from "react-redux";
 import {RootState} from "../../redux/store";
 import {addClassName} from "../common/utils/helpers/helpers";
 import {compose} from 'redux';
+import headerTitleStyle from './HeaderTitle/HeaderTitle.module.scss'
+
+import { Layout } from 'antd';
 
 
 type MapStatePropsType = {
@@ -23,7 +26,7 @@ const Header: React.FC<PropsType> = ({isAuthenticate}) => {
         <div className={classes}>
             <header id="header">
                 <div className={s.inner}>
-                    <HeaderTitle content="Language Cards"/>
+                    <HeaderTitle content="Language Cards" className={isAuthenticate? headerTitleStyle.authorized : ''}/>
                     <Nav/>
                     <Toggle/>
                 </div>

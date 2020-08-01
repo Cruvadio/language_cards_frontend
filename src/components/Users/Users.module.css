@@ -1,6 +1,6 @@
 .bg {
   min-height: 100vh;
-  background: linear-gradient(45deg, #FC5C7D, #6a82fb);
+  background: linear-gradient(45deg, #1890ff, #eb2f96);
 }
 
 .container {
@@ -21,7 +21,7 @@
 }
 
 .search {
-  background-color: #6a82fb;
+  background-color: #eb2f96;
   padding: 1px 4px;
   display: flex;
   align-items: center;
@@ -31,7 +31,7 @@
 }
 .search .icon {
   margin: 0 10px;
-  color: #FC5C7D;
+  color: #1890ff;
 }
 .search .input {
   flex-grow: 8;

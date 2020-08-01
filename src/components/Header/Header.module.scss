@@ -14,9 +14,10 @@
   transition: background-color 0.2s linear;
 
   &.authorized {
-    padding: 0.66rem 2.66rem;
-    background-color: opacify($color_secondary, 1);
-    box-shadow: 0 0 10px black;
+
+    box-shadow: 0 0 10px $gray-5;
+    padding: 0;
+    background-color: opacify($gray-1, 1);
     position: static;
     & .nav-toggle {
       top: 10px
@@ -30,7 +31,7 @@
   @media ($feature: $ntablet) {
 
 
-    &.active {
+    &.authorized {
       background-color: $color_secondary;
     }
   }

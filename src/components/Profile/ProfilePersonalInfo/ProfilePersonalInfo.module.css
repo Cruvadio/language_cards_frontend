@@ -14,7 +14,7 @@
 
 .userName {
   font-size: 1.5rem;
-  color: #FC5C7D;
+  color: #1890ff;
   padding-bottom: 1rem;
 }
 
@@ -26,7 +26,7 @@
 
 .personalInfo {
   padding-bottom: 1.3rem;
-  color: #FC5C7D;
+  color: #1890ff;
 }
 
 .list {
@@ -50,7 +50,7 @@
 }
 
 .elementCategory {
-  color: #FC5C7D;
+  color: #1890ff;
   font-family: "Montserrat", sans-serif;
 }
 

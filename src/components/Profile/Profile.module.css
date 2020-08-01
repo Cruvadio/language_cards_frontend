@@ -1,7 +1,7 @@
 .profile {
   display: flex;
   min-height: 100vh;
-  background: linear-gradient(45deg, #FC5C7D, #6a82fb);
+  background: linear-gradient(45deg, #1890ff, #eb2f96);
 }
 
 .inner {

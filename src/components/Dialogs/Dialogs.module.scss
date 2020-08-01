@@ -1,0 +1,116 @@
+@import "../../variables";
+
+.bg{
+  min-height: 100vh;
+  background: linear-gradient(45deg, $color_primary, $color_secondary);
+}
+
+.container{
+  width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 3fr 6fr;
+  background-color: white;
+  min-height: inherit;
+
+}
+
+.chats{
+  border-right: 1px solid $color_card_bg;
+}
+
+.li{
+  list-style: none;
+  border-bottom: 1px solid $color_card_bg;
+  padding: 1rem 0;
+  transition: 0.3s ease;
+  cursor: pointer;
+
+  &:hover{
+    background-color: $color_hover;
+
+    & .dialog .meta {
+      b {
+        color: $color_accent;
+      }
+
+      div{
+        color: $gray-3;
+      }
+
+      time{
+        color: $gray-4;
+      }
+    }
+
+
+  }
+
+
+  &.active{
+    border-right: 3px solid $color_primary;
+    background-color: $color_selected;
+
+    & .dialog .meta {
+      b {
+        color: $color_primary;
+      }
+
+      div{
+        color: $gray-8;
+      }
+
+      time{
+        color: $gray-6
+      }
+    }
+  }
+
+}
+
+.dialog{
+  padding: 0 15px;
+  font-weight: 300;
+  display: flex;
+  align-items: center;
+
+  & avatar{
+    display: block;
+    width: 40px;
+    height: 40px;
+  }
+
+
+  & .meta{
+    margin-left: 15px;
+    width: 100%;
+
+    b{
+      color: $color_primary;
+      font-weight: 500;
+
+      transition: 0.3s ease;
+    }
+
+    & .message{
+      margin-top: 5px;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      color: $gray-8;
+
+      div{
+        flex-grow: 2;
+      }
+
+      time{
+        display: block;
+        text-align: right;
+        font-size: 13px;
+        color: $gray-6;
+      }
+    }
+  }
+}
+
+
