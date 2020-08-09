@@ -24,6 +24,7 @@
     "axios": "^0.19.2",
     "date-fns": "^2.15.0",
     "formik": "^2.1.5",
+    "formik-antd": "^2.0.1",
     "formik-material-ui": "^3.0.0-alpha.0",
     "lodash": "^4.17.19",
     "react": "^16.13.1",

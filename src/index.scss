@@ -25,6 +25,13 @@ body {
   }
 }
 
+.all{
+  height: 1px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
 .input{
   border: none;
   padding: 1.33rem;

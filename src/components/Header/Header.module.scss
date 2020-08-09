@@ -14,7 +14,7 @@
   transition: background-color 0.2s linear;
 
   &.authorized {
-
+    height: 6%;
     box-shadow: 0 0 10px $gray-5;
     padding: 0;
     background-color: opacify($gray-1, 1);

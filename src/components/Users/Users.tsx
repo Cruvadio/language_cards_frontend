@@ -5,7 +5,7 @@ import Container from "@material-ui/core/Container";
 import {follow, getUsers, unfollow} from "../../redux/reducers/users_reducer";
 import {connect} from "react-redux";
 import {RootState} from "../../redux/store";
-import {getFetching, getPagesCount, getPortionSize, getUsersList} from "../../redux/reducers/users_selectors";
+import {FetchingSelector, PagesCountSelector, PortionSizeSelector, UsersListSelector} from "../../redux/reducers/users_selectors";
 import {Pagination} from "@material-ui/lab";
 import {Grid, List} from "@material-ui/core";
 import {User} from "./User";
@@ -103,11 +103,11 @@ const Users: React.FC<MapStateProps & MapDispatchProps> = React.memo(
     })
 
 const mapStateToProps = (state: RootState) => ({
-    isFetching: getFetching(state),
-    pagesCount: getPagesCount(state),
-    portionSize: getPortionSize(state),
+    isFetching: FetchingSelector(state),
+    pagesCount: PagesCountSelector(state),
+    portionSize: PortionSizeSelector(state),
     pageSize: state.users.pageSize,
-    users: getUsersList(state),
+    users: UsersListSelector(state),
     fetching_followings: state.users.fetching_followings,
     userID: state.auth.currentUser.userID,
     count: state.users.count

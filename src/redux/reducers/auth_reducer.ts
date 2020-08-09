@@ -22,7 +22,7 @@ const initialState = {
 
 type InitialStateType = typeof initialState
 
-type currentUserType = typeof initialState.currentUser
+export type currentUserType = typeof initialState.currentUser
 
 type Actions = ActionType<typeof actions>
 const authReducer = (state = initialState, action: Actions) : InitialStateType => {

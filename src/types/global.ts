@@ -83,14 +83,24 @@ export type MessageType = {
     text: string
     is_new: boolean
     date: string
+    dialog: number
 }
+
+export type SendMessageType = {
+    text: string
+}
+
 
 export type UserMessageType = {
     id: number
     username: string
+    profile: {
+        avatar_small: string | null
+    }
 }
 
 export type DialogType = {
+    type: 'D' | 'C'
     id: number
     participants: Array<UserMessageType>
     last_message: MessageType
@@ -100,4 +110,20 @@ export type CurrentDialogType = {
     id: number
     participants: Array<UserMessageType>
     messages: Array<MessageType>
+}
+
+export type CreateDialog = {
+    participants: Array<number>
+    type: 'D'|'C'
+}
+
+export type WebsocketActionType =
+    'LOAD_MESSAGES' |
+    'ADD_MESSAGE'   |
+    'READ_MESSAGE'
+
+
+export type WebsocketType<T>= {
+    payload: T
+    action: WebsocketActionType
 }

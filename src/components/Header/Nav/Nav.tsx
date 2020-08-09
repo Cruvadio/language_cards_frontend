@@ -6,7 +6,7 @@ import {userLogOut} from '../../../redux/reducers/auth_reducer'
 import {RootState} from '../../../redux/store'
 import {NavDataType} from '../../../types/global'
 import {Menu} from 'antd'
-import {NavLink} from 'react-router-dom'
+import {NavLink, useLocation} from 'react-router-dom'
 import {LoginOutlined, LogoutOutlined, MailOutlined, TeamOutlined, UserOutlined} from '@ant-design/icons'
 
 type MapStatePropsType = {
@@ -24,7 +24,12 @@ type PropsType = MapStatePropsType & MapDispatchPropsType & OwnPropsType
 
 const Nav: React.FC<PropsType> = ({isAuthenticate, navData, userLogOut}) => {
 
-    const [current, setCurrent] = useState('profile')
+    const regexp = /profile|users|messages/
+    const path = useLocation().pathname.match(regexp)
+    if (path)
+        console.log(path[0])
+    const [current, setCurrent] = useState(path ? path[0] : '')
+
 
     const handleClick = (e: any) => {
         console.log('click', e)

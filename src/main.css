@@ -10,6 +10,7 @@
   transition: background-color 0.2s linear;
 }
 .header.authorized {
+  height: 6%;
   box-shadow: 0 0 10px #d9d9d9;
   padding: 0;
   background-color: white;

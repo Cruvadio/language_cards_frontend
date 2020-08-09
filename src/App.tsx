@@ -78,11 +78,10 @@ const App : React.FC<MapStatePropsType & MapDispatchProps> =
         </div>*/
 
         <ThemeProvider theme={theme}>
-            <Layout className="layout">
+            <div className='all'>
                 <Header/>
                 {isNewUser && <Redirect to={"/edit/profile"}/>
                 }
-                <Layout.Content>
                 <Switch>
                     <ProfileRoute exact path='/'>
                         <Landing/>
@@ -110,8 +109,7 @@ const App : React.FC<MapStatePropsType & MapDispatchProps> =
                     </PrivateRoute>
                 </Switch>
                 {/*<Intro buttonName={props.buttonName} introTitle={props.introTitle}/>*/}
-                </Layout.Content>
-            </Layout>
+            </div>
         </ThemeProvider>
     );
 }

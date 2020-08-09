@@ -1,32 +1,34 @@
 @import "../../variables";
 
-.bg{
-  min-height: 100vh;
+.bg {
+  height: 1px;
+  min-height: 94%;
   background: linear-gradient(45deg, $color_primary, $color_secondary);
 }
 
-.container{
-  width: 1200px;
+.container {
+  height: 1px;
+  max-width: 1200px;
+  min-height: 100%;
   margin: 0 auto;
   display: grid;
   grid-template-columns: 3fr 6fr;
   background-color: white;
-  min-height: inherit;
 
 }
 
-.chats{
+.chats {
   border-right: 1px solid $color_card_bg;
 }
 
-.li{
+.li {
   list-style: none;
   border-bottom: 1px solid $color_card_bg;
   padding: 1rem 0;
   transition: 0.3s ease;
   cursor: pointer;
 
-  &:hover{
+  &:hover {
     background-color: $color_hover;
 
     & .dialog .meta {
@@ -34,11 +36,11 @@
         color: $color_accent;
       }
 
-      div{
+      div {
         color: $gray-3;
       }
 
-      time{
+      time {
         color: $gray-4;
       }
     }
@@ -47,7 +49,7 @@
   }
 
 
-  &.active{
+  &.active {
     border-right: 3px solid $color_primary;
     background-color: $color_selected;
 
@@ -56,11 +58,11 @@
         color: $color_primary;
       }
 
-      div{
+      div {
         color: $gray-8;
       }
 
-      time{
+      time {
         color: $gray-6
       }
     }
@@ -68,42 +70,42 @@
 
 }
 
-.dialog{
+.dialog {
   padding: 0 15px;
   font-weight: 300;
   display: flex;
   align-items: center;
 
-  & avatar{
+  & avatar {
     display: block;
     width: 40px;
     height: 40px;
   }
 
 
-  & .meta{
+  & .meta {
     margin-left: 15px;
     width: 100%;
 
-    b{
+    b {
       color: $color_primary;
       font-weight: 500;
 
       transition: 0.3s ease;
     }
 
-    & .message{
+    & .message {
       margin-top: 5px;
       width: 100%;
       display: flex;
       justify-content: space-between;
       color: $gray-8;
 
-      div{
+      div {
         flex-grow: 2;
       }
 
-      time{
+      time {
         display: block;
         text-align: right;
         font-size: 13px;
@@ -114,3 +116,96 @@
 }
 
 
+.messagesOuter {
+
+  max-height: 100%;
+  overflow-y: auto;
+  padding: 1rem 4rem;
+}
+
+.messages {
+
+
+  li {
+    list-style: none;
+  }
+
+
+  & .message {
+    cursor: pointer;
+    position: relative;
+    max-width: 100%;
+    padding: 1rem;
+    transition: 0.3s ease;
+
+    .select {
+      color: $color_accent;
+      display: none;
+      border-radius: 50%;
+      font-size: 30px;
+      position: absolute;
+      top: 50%;
+      left: -43px;
+
+      transform: translate(0, -50%);
+
+      .selected {
+        display: block;
+      }
+    }
+
+
+    &:hover {
+      background-color: $color_selected;
+
+      & .select {
+        display: block;
+      }
+    }
+
+    time {
+      color: $gray-5;
+      position: absolute;
+      top: 10px;
+      right: 10px;
+    }
+
+    .meta {
+      align-items: center;
+      width: 100%;
+      word-wrap: break-word;
+
+      .avatar {
+        margin-right: 1rem;
+
+
+      }
+
+      .info {
+        max-width: 100%;
+
+        .username {
+          position: absolute;
+          top: 10px;
+          left: 70px;
+          font-weight: 500;
+          color: $color_primary;
+        }
+
+        .text {
+          max-width: 100%;
+          padding-left: 55px;
+          padding-right: 101px;
+
+        }
+      }
+    }
+
+  }
+
+
+}
+
+.spinner{
+  margin: auto;
+}

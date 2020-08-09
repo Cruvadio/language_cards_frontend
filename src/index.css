@@ -19,6 +19,13 @@ body.no-scroll {
   overflow: hidden;
 }
 
+.all {
+  height: 1px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
 .input {
   border: none;
   padding: 1.33rem;
@@ -46,6 +53,7 @@ body.no-scroll {
   transition: background-color 0.2s linear;
 }
 .header.authorized {
+  height: 6%;
   box-shadow: 0 0 10px #d9d9d9;
   padding: 0;
   background-color: white;
